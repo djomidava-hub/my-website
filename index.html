@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Иконка -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💄</text></svg>">
-    
-    <!-- Подключение шрифтов -->
+    <link rel="icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💄</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <title>Ламара Джомидава | Визажист</title>
 
     <style>
         :root {
-            /* 🌌 Футуристический фиолетовый (тёмный, глубокий) */
             --accent: #a855f7;
             --accent-glow: rgba(168, 85, 247, 0.4);
             --accent-hover: #9333ea;
@@ -27,7 +21,6 @@
             --card-border: rgba(168, 85, 247, 0.3);
             --shadow: rgba(168, 85, 247, 0.15);
             --card-glow: 0 0 60px rgba(168, 85, 247, 0.2);
-            
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
         }
@@ -41,8 +34,9 @@
             animation: silkMove 20s ease infinite;
             color: var(--text-dark); 
             font-family: var(--font-body);
-            padding: 40px 20px; overflow-x: hidden;
+            padding: 30px 15px; overflow-x: hidden;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         @keyframes silkMove {
@@ -55,11 +49,11 @@
 
         .content {
             position: relative; z-index: 2; text-align: center; 
-            width: 100%; max-width: 420px;
-            padding: 50px 25px;
+            width: 100%; max-width: 400px;
+            padding: 40px 20px;
             background: var(--card-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 50px; 
+            border-radius: 40px; 
             border: 1px solid var(--card-border);
             box-shadow: var(--card-glow);
             animation: fadeIn 1.2s ease-out;
@@ -67,263 +61,135 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        p.brand { 
-            font-size: 0.75rem; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            letter-spacing: 8px; 
-            margin-bottom: 20px; 
-            font-weight: 600; 
-            font-family: var(--font-body);
-            text-shadow: 0 0 20px var(--accent-glow);
-        }
-        
-        h1 { 
-            font-size: 3rem; 
-            font-weight: 300; 
-            margin-bottom: 40px; 
-            color: var(--text-dark); 
-            letter-spacing: -1.5px;
-            font-family: var(--font-heading);
-            line-height: 1.1;
-            text-shadow: 0 0 30px var(--accent-glow);
-        }
+        p.brand { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 15px; font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 20px var(--accent-glow); }
+        h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 30px; color: var(--text-dark); letter-spacing: -1px; font-family: var(--font-heading); line-height: 1.1; text-shadow: 0 0 30px var(--accent-glow); }
 
-        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 40px; }
-        .service-card {
-            background: rgba(168, 85, 247, 0.1);
-            padding: 18px 6px; border-radius: 24px;
-            border: 1px solid var(--card-border);
-            transition: 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px var(--shadow);
-            background: rgba(168, 85, 247, 0.2);
-            border-color: var(--accent);
-        }
-        .service-card span { font-size: 1.7rem; display: block; margin-bottom: 6px; }
-        .service-card p { 
-            font-size: 0.55rem; 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            color: var(--text-light); 
-            line-height: 1.4;
-            letter-spacing: 0.5px;
-        }
+        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 30px; }
+        .service-card { background: rgba(168, 85, 247, 0.1); padding: 15px 5px; border-radius: 20px; border: 1px solid var(--card-border); transition: 0.3s ease; }
+        .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px var(--shadow); background: rgba(168, 85, 247, 0.2); border-color: var(--accent); }
+        .service-card span { font-size: 1.5rem; display: block; margin-bottom: 5px; }
+        .service-card p { font-size: 0.5rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); line-height: 1.3; letter-spacing: 0.5px; }
 
-        .portfolio-title { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 4px; 
-            margin: 10px 0 15px 0; 
-            color: var(--accent); 
-            font-weight: 600;
-            font-family: var(--font-body);
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
+        .portfolio-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0 12px 0; color: var(--accent); font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 15px var(--accent-glow); }
         
-        /* 🔄 Контейнер для портфолио */
-        .portfolio-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 25px;
-            overflow: hidden;
-        }
+        .portfolio-container { position: relative; width: 100%; margin-bottom: 20px; overflow: hidden; }
 
         .portfolio-grid { 
-            display: flex; 
-            gap: 12px; 
-            overflow-x: auto; 
-            overflow-y: hidden;
-            padding: 5px 10px 25px 10px; 
-            scroll-snap-type: x mandatory; 
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
+            display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden;
+            padding: 5px 8px 20px 8px; scroll-snap-type: x mandatory; 
+            scrollbar-width: none; -webkit-overflow-scrolling: touch;
             width: 100%;
         }
-        .portfolio-grid::-webkit-scrollbar { 
-            display: none; 
-        }
+        .portfolio-grid::-webkit-scrollbar { display: none; }
         
         .portfolio-item {
-            min-width: 145px; 
-            height: 210px; 
+            min-width: 130px; height: 180px; 
             background: rgba(168, 85, 247, 0.15); 
-            border-radius: 28px; 
-            overflow: hidden;
+            border-radius: 24px; overflow: hidden; 
             scroll-snap-align: start; 
-            border: 1px solid var(--card-border);
-            flex-shrink: 0; 
-            transition: 0.3s;
+            border: 1px solid var(--card-border); 
+            flex-shrink: 0; transition: 0.3s ease;
         }
-        .portfolio-item:hover { 
-            transform: scale(1.03); 
-            border-color: var(--accent);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
+        .portfolio-item:hover { transform: scale(1.03); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* ➡️ Кликабельные стрелки с авто-скроллом */
+        /* Стрелки — только для ПК */
         .scroll-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(168, 85, 247, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
-            transition: all 0.3s ease;
-            border: 1px solid var(--card-border);
-            user-select: none;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 36px; height: 36px; background: rgba(168, 85, 247, 0.3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+            transition: 0.3s ease; border: 1px solid var(--card-border); user-select: none;
         }
-        .scroll-arrow svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-dark);
-        }
-        .scroll-arrow:hover {
-            background: rgba(168, 85, 247, 0.6);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6);
-        }
-        .scroll-arrow:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-        .scroll-arrow.auto-scroll {
-            background: rgba(168, 85, 247, 0.8);
-            box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
-            animation: pulse 0.8s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); }
-            50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.9); }
-        }
-        .scroll-arrow.left { left: 0; }
-        .scroll-arrow.right { right: 0; }
-        
-        .scroll-arrow.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .scroll-arrow svg { width: 18px; height: 18px; fill: var(--text-dark); pointer-events: none; }
+        .scroll-arrow:hover { background: rgba(168, 85, 247, 0.6); transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6); }
+        .scroll-arrow:active { transform: translateY(-50%) scale(0.95); }
+        .scroll-arrow.auto-scroll { background: rgba(168, 85, 247, 0.8); box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); animation: pulse 0.8s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); } 50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.9); } }
+        .scroll-arrow.left { left: 5px; }
+        .scroll-arrow.right { right: 5px; }
+        .scroll-arrow.hidden { opacity: 0; pointer-events: none; }
 
-        /* 🌫 Fade эффект по краям */
-        .portfolio-fade {
-            position: absolute;
-            top: 5px;
-            bottom: 25px;
-            width: 50px;
-            pointer-events: none;
-            z-index: 5;
-        }
-        .portfolio-fade.left {
-            left: 0;
-            background: linear-gradient(to right, rgba(45,31,61,0.95), transparent);
-        }
-        .portfolio-fade.right {
-            right: 0;
-            background: linear-gradient(to left, rgba(45,31,61,0.95), transparent);
-        }
+        .portfolio-fade { position: absolute; top: 5px; bottom: 20px; width: 40px; pointer-events: none; z-index: 5; }
+        .portfolio-fade.left { left: 0; background: linear-gradient(to right, rgba(45,31,61,0.95), transparent); }
+        .portfolio-fade.right { right: 0; background: linear-gradient(to left, rgba(45,31,61,0.95), transparent); }
 
         .btn {
-            display: block; 
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-            color: #fff;
-            padding: 24px; 
-            border-radius: 30px;
-            text-decoration: none; 
-            font-size: 0.85rem; 
-            font-weight: 600;
-            letter-spacing: 4px; 
-            margin: 10px 0 45px 0;
-            box-shadow: 0 15px 40px var(--accent-glow);
-            transition: 0.3s;
-            text-transform: uppercase;
-            font-family: var(--font-body);
+            display: block; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: #fff; padding: 20px; border-radius: 28px; text-decoration: none; 
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 3px; margin: 10px 0 35px 0;
+            box-shadow: 0 15px 40px var(--accent-glow); transition: 0.3s ease;
+            text-transform: uppercase; font-family: var(--font-body);
         }
-        .btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5);
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5); }
         .btn:active { transform: scale(0.98); }
 
-        .socials { display: flex; gap: 22px; justify-content: center; }
+        .socials { display: flex; gap: 18px; justify-content: center; }
         .social-btn {
-            width: 62px; height: 62px; 
-            background: rgba(168, 85, 247, 0.2);
-            border-radius: 50%; 
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 8px 20px var(--shadow); 
-            text-decoration: none; 
-            transition: 0.3s;
+            width: 55px; height: 55px; background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 8px 20px var(--shadow); text-decoration: none; transition: 0.3s ease;
             border: 1px solid var(--card-border);
         }
-        .social-btn:hover { 
-            transform: translateY(-5px); 
-            background: rgba(168, 85, 247, 0.4);
-            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
-            border-color: var(--accent);
-        }
-        .social-btn svg { width: 28px; height: 28px; fill: var(--text-dark); transition: 0.3s; }
+        .social-btn:hover { transform: translateY(-5px); background: rgba(168, 85, 247, 0.4); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4); border-color: var(--accent); }
+        .social-btn svg { width: 24px; height: 24px; fill: var(--text-dark); transition: 0.3s ease; }
         .social-btn:hover svg { fill: #fff; }
 
-        /* ✨ Блестки */
         .dot { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; box-shadow: 0 0 10px var(--accent-glow); }
         @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); } 50% { opacity: 0.7; transform: translateY(-35px) scale(1.3); } }
+
+        @media (min-width: 600px) {
+            .content { max-width: 450px; padding: 50px 30px; }
+            h1 { font-size: 3rem; }
+            .portfolio-item { min-width: 145px; height: 200px; }
+        }
+        @media (min-width: 900px) {
+            body { padding: 50px 30px; }
+            .content { max-width: 500px; }
+            .portfolio-item { min-width: 160px; height: 220px; }
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .scroll-arrow { display: none !important; }
+            .portfolio-fade { display: none; }
+        }
     </style>
 </head>
 <body>
-
     <div class="glitter" id="glitter"></div>
-
     <div class="content">
         <p class="brand">Lamara Dzhomidava</p>
         <h1>Визажист</h1>
-
         <div class="services">
             <div class="service-card"><span>💄</span><p>Дневной<br>образ</p></div>
             <div class="service-card"><span>✨</span><p>Вечерний<br>стиль</p></div>
             <div class="service-card"><span>👰</span><p>Свадебный<br>макияж</p></div>
         </div>
-
         <p class="portfolio-title">Мои работы</p>
         
-        <!-- 🖼 Портфолио с твоими 10 фото -->
         <div class="portfolio-container" id="portfolioContainer">
             <div class="portfolio-fade left"></div>
             <div class="portfolio-fade right"></div>
-            
-            <!-- Стрелки с авто-прокруткой -->
-            <div class="scroll-arrow left" id="scrollLeft">
+            <div class="scroll-arrow left" id="scrollLeft" aria-label="Листать влево">
                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
             </div>
-            <div class="scroll-arrow right" id="scrollRight">
+            <div class="scroll-arrow right" id="scrollRight" aria-label="Листать вправо">
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </div>
-            
             <div class="portfolio-grid" id="portfolioGrid">
-                <div class="portfolio-item"><img src="https://i.ibb.co/20CX22Qp/1.jpg" alt="Работа 1" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/35dxcRSq/2.jpg" alt="Работа 2" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/B5wvjwpM/3.jpg" alt="Работа 3" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/w3xctz3/4.jpg" alt="Работа 4" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/1tH9TZG2/5.jpg" alt="Работа 5" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/xS81YVgG/6.jpg" alt="Работа 6" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/KvNVbGK/7.jpg" alt="Работа 7" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/DDRqKL8g/8.jpg" alt="Работа 8" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/TqMpCqw0/9.jpg" alt="Работа 9" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/HpVFKb99/10.jpg" alt="Работа 10" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/20CX22Qp/1.jpg" alt="Работа 1" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/35dxcRSq/2.jpg" alt="Работа 2" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/B5wvjwpM/3.jpg" alt="Работа 3" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/w3xctz3/4.jpg" alt="Работа 4" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/1tH9TZG2/5.jpg" alt="Работа 5" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/xS81YVgG/6.jpg" alt="Работа 6" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/KvNVbGK/7.jpg" alt="Работа 7" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/DDRqKL8g/8.jpg" alt="Работа 8" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/TqMpCqw0/9.jpg" alt="Работа 9" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/HpVFKb99/10.jpg" alt="Работа 10" width="130" height="180" loading="lazy"></div>
             </div>
         </div>
 
         <a href="https://wa.me/79628848880" target="_blank" rel="noopener noreferrer" class="btn">Записаться</a>
-
         <div class="socials">
             <a href="https://www.instagram.com/lamara_dzhomidava" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -335,77 +201,101 @@
     </div>
 
     <script>
-        // ✨ Блестки
-        const bg = document.getElementById('glitter');
-        for (let i = 0; i < 40; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            dot.style.left = Math.random() * 100 + '%';
-            dot.style.top = Math.random() * 100 + '%';
-            const size = Math.random() * 2.5 + 0.8 + 'px';
-            dot.style.width = size; dot.style.height = size;
-            dot.style.setProperty('--d', Math.random() * 5 + 4 + 's');
-            dot.style.animationDelay = Math.random() * 5 + 's';
-            bg.appendChild(dot);
-        }
-
-        // 🔄 Автоматическая прокрутка при наведении (ОЧЕНЬ ПЛАВНАЯ)
-        const portfolioGrid = document.getElementById('portfolioGrid');
-        const scrollLeft = document.getElementById('scrollLeft');
-        const scrollRight = document.getElementById('scrollRight');
-        
-        let autoScrollInterval = null;
-        const scrollSpeed = 100;      // Интервал между шагами (мс)
-        const scrollAmount = 0.8;     // Пикселей за шаг
-
-        function startAutoScroll(direction) {
-            stopAutoScroll();
-            const activeArrow = direction < 0 ? scrollLeft : scrollRight;
-            activeArrow.classList.add('auto-scroll');
-            autoScrollInterval = setInterval(() => {
-                portfolioGrid.scrollBy({ left: direction * scrollAmount, behavior: 'auto' });
-                updateArrows();
-            }, scrollSpeed);
-        }
-
-        function stopAutoScroll() {
-            if (autoScrollInterval) {
-                clearInterval(autoScrollInterval);
-                autoScrollInterval = null;
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ✨ Блестки
+            const bg = document.getElementById('glitter');
+            if (bg) {
+                for (let i = 0; i < 35; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.style.left = Math.random() * 100 + '%';
+                    dot.style.top = Math.random() * 100 + '%';
+                    const size = Math.random() * 2 + 0.5 + 'px';
+                    dot.style.width = size; dot.style.height = size;
+                    dot.style.setProperty('--d', Math.random() * 5 + 3 + 's');
+                    dot.style.animationDelay = Math.random() * 5 + 's';
+                    bg.appendChild(dot);
+                }
             }
-            scrollLeft.classList.remove('auto-scroll');
-            scrollRight.classList.remove('auto-scroll');
-        }
 
-        // 🖱 События для стрелок
-        scrollLeft.addEventListener('mouseenter', () => startAutoScroll(-1));
-        scrollLeft.addEventListener('mouseleave', stopAutoScroll);
-        scrollLeft.addEventListener('touchstart', (e) => { e.preventDefault(); startAutoScroll(-1); });
-        scrollLeft.addEventListener('touchend', stopAutoScroll);
-        scrollLeft.addEventListener('click', () => portfolioGrid.scrollBy({ left: -150, behavior: 'smooth' }));
-
-        scrollRight.addEventListener('mouseenter', () => startAutoScroll(1));
-        scrollRight.addEventListener('mouseleave', stopAutoScroll);
-        scrollRight.addEventListener('touchstart', (e) => { e.preventDefault(); startAutoScroll(1); });
-        scrollRight.addEventListener('touchend', stopAutoScroll);
-        scrollRight.addEventListener('click', () => portfolioGrid.scrollBy({ left: 150, behavior: 'smooth' }));
-
-        // ➡️ Управление видимостью стрелок
-        function updateArrows() {
-            const scrollLeftPos = portfolioGrid.scrollLeft;
-            const scrollWidth = portfolioGrid.scrollWidth;
-            const clientWidth = portfolioGrid.clientWidth;
+            const grid = document.getElementById('portfolioGrid');
+            const scrollLeft = document.getElementById('scrollLeft');
+            const scrollRight = document.getElementById('scrollRight');
             
-            if (scrollLeftPos <= 10) scrollLeft.classList.add('hidden');
-            else scrollLeft.classList.remove('hidden');
+            if (!grid || !scrollLeft || !scrollRight) return;
             
-            if (scrollLeftPos >= scrollWidth - clientWidth - 10) scrollRight.classList.add('hidden');
-            else scrollRight.classList.remove('hidden');
-        }
-
-        portfolioGrid.addEventListener('scroll', updateArrows);
-        window.addEventListener('resize', updateArrows);
-        setTimeout(updateArrows, 100);
+            let autoScrollTimer = null;
+            let isClicking = false; // 🔒 Флаг: идёт ли клик
+            
+            // Проверяем, что это ПК с мышью
+            const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            
+            if (isDesktop) {
+                
+                // 🖱 Клик по стрелке — листает ровно на одно фото
+                function scrollByClick(direction) {
+                    // Останавливаем авто-скролл если он идёт
+                    if (autoScrollTimer) {
+                        clearInterval(autoScrollTimer);
+                        autoScrollTimer = null;
+                        scrollLeft.classList.remove('auto-scroll');
+                        scrollRight.classList.remove('auto-scroll');
+                    }
+                    
+                    // Блокируем ховер на 300мс чтобы не мешал
+                    isClicking = true;
+                    setTimeout(() => { isClicking = false; }, 300);
+                    
+                    // Считаем ширину одного элемента + отступ
+                    const itemWidth = 130 + 10; // 130px фото + 10px gap
+                    grid.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+                }
+                
+                scrollLeft.addEventListener('click', () => scrollByClick(-1));
+                scrollRight.addEventListener('click', () => scrollByClick(1));
+                
+                // 🖱 Авто-скролл при наведении (только если не кликаем)
+                function startAutoScroll(direction) {
+                    if (isClicking) return;
+                    stopAutoScroll();
+                    
+                    const arrow = direction < 0 ? scrollLeft : scrollRight;
+                    arrow.classList.add('auto-scroll');
+                    
+                    autoScrollTimer = setInterval(() => {
+                        if (isClicking) { stopAutoScroll(); return; }
+                        grid.scrollLeft += direction * 0.2;
+                        updateArrows();
+                    }, 60);
+                }
+                
+                function stopAutoScroll() {
+                    if (autoScrollTimer) {
+                        clearInterval(autoScrollTimer);
+                        autoScrollTimer = null;
+                    }
+                    scrollLeft.classList.remove('auto-scroll');
+                    scrollRight.classList.remove('auto-scroll');
+                }
+                
+                scrollLeft.addEventListener('mouseenter', () => startAutoScroll(-1));
+                scrollLeft.addEventListener('mouseleave', stopAutoScroll);
+                scrollRight.addEventListener('mouseenter', () => startAutoScroll(1));
+                scrollRight.addEventListener('mouseleave', stopAutoScroll);
+            }
+            
+            // ➡️ Управление видимостью стрелок
+            function updateArrows() {
+                const maxScroll = grid.scrollWidth - grid.clientWidth;
+                scrollLeft.classList.toggle('hidden', grid.scrollLeft <= 5);
+                scrollRight.classList.toggle('hidden', grid.scrollLeft >= maxScroll - 5);
+            }
+            
+            grid.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+            setTimeout(updateArrows, 300);
+        });
     </script>
 </body>
 </html>
