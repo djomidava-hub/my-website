@@ -64,7 +64,7 @@
         
         .works-container { position: relative; width: 100%; margin-bottom: 18px; overflow: visible; }
         
-        /* 📱 ТЕЛЕФОН: 2 фото в ряду со скроллом */
+        /* 📱 ТЕЛЕФОН: Все фото в ряд со скроллом */
         .works-slider { 
             display: flex;
             gap: 8px;
@@ -80,9 +80,10 @@
         }
         .works-slider::-webkit-scrollbar { display: none; }
         
+        /* 🔧 УМЕНЬШЕННЫЕ фото для телефона чтобы влезали в ряд */
         .work-item {
-            min-width: calc(50% - 4px); /* 2 фото в ряду */
-            height: 130px;
+            min-width: 85px;
+            height: 120px;
             background: rgba(168,85,247,0.15);
             border-radius: 20px;
             overflow: hidden;
@@ -103,14 +104,14 @@
             display: block; 
         }
 
-        /* Стрелки (только ПК) */
+        /* Стрелки (скрыты на телефоне) */
         .arrow-btn {
             position: absolute; top:50%; transform:translateY(-50%);
             width:36px;height:36px;background:rgba(168,85,247,0.4);
             border-radius:50%;display:flex;align-items:center;justify-content:center;
             cursor:pointer;z-index:10;box-shadow:0 4px 20px rgba(168,85,247,0.5);
             transition:0.3s;border:1px solid var(--card-border);user-select:none;
-            display: none; /* Скрыты на телефоне по умолчанию */
+            display: none;
         }
         .arrow-btn svg { width:18px;height:18px;fill:var(--text-dark);pointer-events:none; }
         .arrow-btn:hover { background:rgba(168,85,247,0.7);transform:translateY(-50%)scale(1.1); }
@@ -147,22 +148,19 @@
         .gallery-counter { color:#fff;font-size:1rem;margin-top:15px;opacity:0.8; }
         .gallery-arrow-svg { width:24px;height:24px;fill:#fff; }
 
-        /* 📟 ПЛАНШЕТ: Горизонтальный скролл со стрелками */
+        /* 📟 ПЛАНШЕТ: Стрелки появляются */
         @media(min-width:600px) { 
             body{padding:35px 20px;}
             .main-card{max-width:450px;padding:45px 25px;}
             h1{font-size:2.8rem;}
-            .works-slider{
-                gap:10px;
-                padding:5px 55px 20px 55px;
-            }
+            .works-slider{gap:10px;padding:5px 55px 20px 55px;}
             .work-item{min-width:95px;height:155px;}
             .arrow-btn{display:flex;width:40px;height:40px;}
             .arrow-btn svg{width:20px;height:20px;}
             .fade-overlay{display:block;}
         }
 
-        /* 💻 ПК: Горизонтальный скролл со стрелками (КАК БЫЛО) */
+        /* 💻 ПК: Всё как было (горизонтальный скролл + стрелки + авто) */
         @media(min-width:900px) { 
             body{padding:50px 30px;}
             .main-card{max-width:500px;padding:50px 30px;}
@@ -265,7 +263,7 @@
         const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
         const SCROLL_SPEED = 0.3;
-        const CLICK_AMOUNTS = { mobile: 166, tablet: 105, pc: 132 }; // 🔧 Телефон: 2 фото = 166px
+        const CLICK_AMOUNTS = { mobile: 93, tablet: 105, pc: 132 };
 
         function getClickAmount() {
             const w = window.innerWidth;
