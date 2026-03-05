@@ -94,9 +94,10 @@
         }
         .portfolio-grid::-webkit-scrollbar { display: none; }
         
+        /* 🔧 УМЕНЬШЕННЫЕ фото для мобильных */
         .portfolio-item {
-            min-width: 100px; 
-            height: 140px; 
+            min-width: 75px; 
+            height: 105px; 
             background: rgba(168, 85, 247, 0.15); 
             border-radius: 20px; 
             overflow: hidden; 
@@ -104,9 +105,10 @@
             border: 1px solid var(--card-border); 
             flex-shrink: 0; 
             transition: 0.3s ease;
+            cursor: pointer;
         }
         .portfolio-item:hover { 
-            transform: scale(1.03); 
+            transform: scale(1.05); 
             border-color: var(--accent); 
             box-shadow: 0 0 20px var(--accent-glow); 
         }
@@ -117,6 +119,7 @@
             display: block; 
         }
 
+        /* Стрелки */
         .scroll-arrow {
             position: absolute; 
             top: 50%; 
@@ -183,11 +186,81 @@
         .dot { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; box-shadow: 0 0 10px var(--accent-glow); }
         @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); } 50% { opacity: 0.7; transform: translateY(-35px) scale(1.3); } }
 
+        /* 🖼 ГАЛЕРЕЯ (Lightbox) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+        .lightbox.active { display: flex; }
+        
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 85%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            border: 2px solid var(--accent);
+            transition: 0.3s ease;
+        }
+        .lightbox-close:hover { background: var(--accent); transform: rotate(90deg); }
+        .lightbox-close svg { width: 24px; height: 24px; fill: #fff; }
+        
+        .lightbox-nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .lightbox-arrow {
+            width: 48px;
+            height: 48px;
+            background: rgba(168, 85, 247, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        .lightbox-arrow:hover { background: var(--accent); transform: scale(1.1); }
+        .lightbox-arrow svg { width: 24px; height: 24px; fill: #fff; }
+        
+        .lightbox-counter {
+            color: #fff;
+            font-size: 1rem;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
         @media (min-width: 600px) {
             body { padding: 35px 20px; }
             .content { max-width: 450px; padding: 45px 25px; }
             h1 { font-size: 2.8rem; }
-            .portfolio-item { min-width: 120px; height: 170px; border-radius: 22px; }
+            .portfolio-item { min-width: 95px; height: 135px; border-radius: 22px; }
             .portfolio-grid { gap: 10px; padding: 5px 55px 20px 55px; }
             .scroll-arrow { width: 40px; height: 40px; }
             .scroll-arrow svg { width: 20px; height: 20px; }
@@ -197,7 +270,7 @@
             body { padding: 50px 30px; }
             .content { max-width: 500px; padding: 50px 30px; }
             h1 { font-size: 3rem; }
-            .portfolio-item { min-width: 140px; height: 200px; border-radius: 24px; }
+            .portfolio-item { min-width: 120px; height: 170px; border-radius: 24px; }
             .portfolio-grid { gap: 12px; padding: 5px 60px 22px 60px; }
             .scroll-arrow { width: 44px; height: 44px; left: 10px; right: 10px; }
             .scroll-arrow svg { width: 22px; height: 22px; }
@@ -212,6 +285,24 @@
 </head>
 <body>
     <div class="glitter" id="glitter"></div>
+    
+    <!-- 🖼 ГАЛЕРЕЯ -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">
+            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </div>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Просмотр работы">
+        <div class="lightbox-nav">
+            <div class="lightbox-arrow" id="lightbox-prev">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </div>
+            <div class="lightbox-arrow" id="lightbox-next">
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </div>
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
+    </div>
+
     <div class="content">
         <p class="brand">Lamara Dzhomidava</p>
         <h1>Визажист</h1>
@@ -232,16 +323,36 @@
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </div>
             <div class="portfolio-grid" id="portfolioGrid">
-                <div class="portfolio-item"><img src="1.jpg" alt="Работа 1" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="2.jpg" alt="Работа 2" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="3.jpg" alt="Работа 3" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="4.jpg" alt="Работа 4" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="5.jpg" alt="Работа 5" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="6.jpg" alt="Работа 6" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="7.jpg" alt="Работа 7" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="8.jpg" alt="Работа 8" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="9.jpg" alt="Работа 9" width="100" height="140" loading="lazy"></div>
-                <div class="portfolio-item"><img src="10.jpg" alt="Работа 10" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item" onclick="openLightbox(1)">
+                    <img src="1.jpg" alt="Работа 1" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(2)">
+                    <img src="2.jpg" alt="Работа 2" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(3)">
+                    <img src="3.jpg" alt="Работа 3" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(4)">
+                    <img src="4.jpg" alt="Работа 4" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(5)">
+                    <img src="5.jpg" alt="Работа 5" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(6)">
+                    <img src="6.jpg" alt="Работа 6" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(7)">
+                    <img src="7.jpg" alt="Работа 7" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(8)">
+                    <img src="8.jpg" alt="Работа 8" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(9)">
+                    <img src="9.jpg" alt="Работа 9" width="75" height="105" loading="lazy">
+                </div>
+                <div class="portfolio-item" onclick="openLightbox(10)">
+                    <img src="10.jpg" alt="Работа 10" width="75" height="105" loading="lazy">
+                </div>
             </div>
         </div>
 
@@ -259,6 +370,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
+            // ✨ Блестки
             const bg = document.getElementById('glitter');
             if (bg) {
                 for (let i = 0; i < 35; i++) {
@@ -274,6 +386,7 @@
                 }
             }
 
+            // 💻 ПОЧИНЕНАЯ ЛОГИКА СТРЕЛОК (ПК)
             const grid = document.getElementById('portfolioGrid');
             const scrollLeft = document.getElementById('scrollLeft');
             const scrollRight = document.getElementById('scrollRight');
@@ -292,13 +405,15 @@
                         scrollLeft.classList.remove('auto-scroll');
                         scrollRight.classList.remove('auto-scroll');
                     }
-                    const itemWidth = window.innerWidth < 600 ? 108 : (window.innerWidth < 900 ? 130 : 152);
+                    const itemWidth = window.innerWidth < 600 ? 83 : (window.innerWidth < 900 ? 105 : 132);
                     grid.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
                 }
                 
+                // 🔧 ОБЕ СТРЕЛКИ РАБОТАЮТ
                 scrollLeft.addEventListener('click', () => scrollByClick(-1));
                 scrollRight.addEventListener('click', () => scrollByClick(1));
                 
+                // Авто-скролл при наведении
                 function startAutoScroll(direction) {
                     if (autoScrollTimer) clearInterval(autoScrollTimer);
                     const arrow = direction < 0 ? scrollLeft : scrollRight;
@@ -324,6 +439,7 @@
                 scrollRight.addEventListener('mouseleave', stopAutoScroll);
             }
             
+            // Обновление видимости стрелок
             function updateArrows() {
                 if (!scrollLeft || !scrollRight) return;
                 
@@ -346,6 +462,77 @@
             grid.addEventListener('scroll', updateArrows);
             window.addEventListener('resize', updateArrows);
             setTimeout(updateArrows, 500);
+
+            // 🖼 ГАЛЕРЕЯ (Lightbox)
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCounter = document.getElementById('lightbox-counter');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            
+            let currentPhotoIndex = 0;
+            const totalPhotos = 10;
+            
+            // Открыть галерею
+            function openLightbox(index) {
+                currentPhotoIndex = index;
+                updateLightboxImage();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Запретить скролл фона
+            }
+            
+            // Закрыть галерею
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Обновить изображение
+            function updateLightboxImage() {
+                lightboxImg.src = `${currentPhotoIndex}.jpg`;
+                lightboxCounter.textContent = `${currentPhotoIndex} / ${totalPhotos}`;
+                // Блокируем предыдущее/следующее если это край
+                lightboxPrev.style.opacity = currentPhotoIndex === 1 ? '0.3' : '1';
+                lightboxNext.style.opacity = currentPhotoIndex === totalPhotos ? '0.3' : '1';
+            }
+            
+            // Следующее фото
+            lightboxNext.addEventListener('click', () => {
+                if (currentPhotoIndex < totalPhotos) {
+                    currentPhotoIndex++;
+                    updateLightboxImage();
+                }
+            });
+            
+            // Предыдущее фото
+            lightboxPrev.addEventListener('click', () => {
+                if (currentPhotoIndex > 1) {
+                    currentPhotoIndex--;
+                    updateLightboxImage();
+                }
+            });
+            
+            // Закрытие по клику на фон
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Управление клавиатурой
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft' && currentPhotoIndex > 1) {
+                    currentPhotoIndex--;
+                    updateLightboxImage();
+                } else if (e.key === 'ArrowRight' && currentPhotoIndex < totalPhotos) {
+                    currentPhotoIndex++;
+                    updateLightboxImage();
+                }
+            });
         });
     </script>
 </body>
