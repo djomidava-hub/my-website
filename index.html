@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💄%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💄%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <title>Ламара Джомидава | Визажист</title>
-
     <style>
         :root {
             --accent: #a855f7;
             --accent-glow: rgba(168, 85, 247, 0.4);
-            --accent-hover: #9333ea;
             --text-dark: #f3e8ff;
             --text-light: #c4b5d9;
             --bg-dark: linear-gradient(135deg, #1a1025 0%, #2d1f3d 25%, #3d2855 50%, #2d1f3d 75%, #1a1025 100%);
             --card-bg: rgba(45, 31, 61, 0.7);
             --card-border: rgba(168, 85, 247, 0.3);
             --shadow: rgba(168, 85, 247, 0.15);
-            --card-glow: 0 0 60px rgba(168, 85, 247, 0.2);
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
         }
@@ -30,509 +27,317 @@
         body {
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center;
-            background: var(--bg-dark); background-size: 400% 400%;
-            animation: silkMove 20s ease infinite;
-            color: var(--text-dark); 
+            background: var(--bg-dark);
+            animation: bgAnim 20s ease infinite;
+            color: var(--text-dark);
             font-family: var(--font-body);
             padding: 25px 12px; overflow-x: hidden;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
         }
 
-        @keyframes silkMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes bgAnim { 0%{background-position:0%50%} 50%{background-position:100%50%} 100%{background-position:0%50%}}
 
-        .glitter { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .glitter { position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1; }
 
-        .content {
+        .main-card {
             position: relative; z-index: 2; text-align: center; 
             width: 100%; max-width: 380px;
             padding: 35px 18px;
             background: var(--card-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 35px; 
-            border: 1px solid var(--card-border);
-            box-shadow: var(--card-glow);
+            backdrop-filter: blur(20px);
+            border-radius: 35px; border: 1px solid var(--card-border);
+            box-shadow: 0 25px 50px rgba(168,85,247,0.2);
             animation: fadeIn 1.2s ease-out;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity:0;transform:translateY(20px);} to {opacity:1;transform:translateY(0);} }
 
-        p.brand { font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 12px; font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 20px var(--accent-glow); }
-        h1 { font-size: 2.2rem; font-weight: 300; margin-bottom: 25px; color: var(--text-dark); letter-spacing: -1px; font-family: var(--font-heading); line-height: 1.1; text-shadow: 0 0 30px var(--accent-glow); }
+        p.brand { font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 12px; font-weight: 600; }
+        h1 { font-size: 2.2rem; font-weight: 300; margin-bottom: 25px; letter-spacing: -1px; }
 
         .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 25px; }
-        .service-card { background: rgba(168, 85, 247, 0.1); padding: 12px 4px; border-radius: 18px; border: 1px solid var(--card-border); transition: 0.3s ease; }
-        .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px var(--shadow); background: rgba(168, 85, 247, 0.2); border-color: var(--accent); }
+        .service-card { background: rgba(168,85,247,0.1); padding: 12px 4px; border-radius: 18px; border: 1px solid var(--card-border); transition: 0.3s; }
+        .service-card:hover { transform: translateY(-3px); border-color: var(--accent); }
         .service-card span { font-size: 1.3rem; display: block; margin-bottom: 4px; }
-        .service-card p { font-size: 0.45rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); line-height: 1.3; letter-spacing: 0.3px; }
+        .service-card p { font-size: 0.45rem; text-transform: uppercase; font-weight: 700; }
 
-        .portfolio-title { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0 10px 0; color: var(--accent); font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 15px var(--accent-glow); }
+        .work-title { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0 10px 0; color: var(--accent); font-weight: 600; }
         
-        .portfolio-container { 
-            position: relative; 
-            width: 100%; 
-            margin-bottom: 18px; 
-            overflow: visible;
-        }
-
-        .portfolio-grid { 
-            display: flex; 
-            gap: 8px; 
-            overflow-x: auto; 
-            overflow-y: visible;
-            padding: 5px 50px 18px 50px;
-            scroll-snap-type: x mandatory; 
-            scrollbar-width: none; 
-            -webkit-overflow-scrolling: touch;
-            width: 100%;
-            position: relative;
-            z-index: 3;
-        }
-        .portfolio-grid::-webkit-scrollbar { display: none; }
+        /* Контейнер портфолио */
+        .works-container { position: relative; width: 100%; margin-bottom: 18px; overflow: visible; }
         
-        /* 🔧 УМЕНЬШЕННЫЕ фото для мобильных */
-        .portfolio-item {
-            min-width: 75px; 
-            height: 105px; 
-            background: rgba(168, 85, 247, 0.15); 
+        .works-slider { 
+            display: flex; gap: 8px; overflow-x: auto; overflow-y: visible;
+            padding: 5px 50px 18px 50px; scroll-snap-type: x mandatory; 
+            scrollbar-width: none; -webkit-overflow-scrolling: touch;
+            width: 100%; position: relative; z-index: 3;
+        }
+        .works-slider::-webkit-scrollbar { display: none; }
+        
+        /* 🔧 КОМПАНКТНЫЕ ФОТО ДЛЯ ТЕЛЕФОНА (УМЕНЬШЕНЫ) */
+        .work-item {
+            min-width: 75px; height: 105px; 
+            background: rgba(168,85,247,0.15); 
             border-radius: 20px; 
             overflow: hidden; 
             scroll-snap-align: start; 
             border: 1px solid var(--card-border); 
-            flex-shrink: 0; 
-            transition: 0.3s ease;
+            flex-shrink: 0; transition: 0.3s;
             cursor: pointer;
         }
-        .portfolio-item:hover { 
-            transform: scale(1.05); 
-            border-color: var(--accent); 
-            box-shadow: 0 0 20px var(--accent-glow); 
-        }
-        .portfolio-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover;
-            display: block; 
-        }
+        .work-item:hover { transform: scale(1.05); border-color: var(--accent); }
+        .work-item img { width:100%;height:100%;object-fit:cover;display:block; }
 
-        /* Стрелки */
-        .scroll-arrow {
-            position: absolute; 
-            top: 50%; 
-            transform: translateY(-50%);
-            width: 36px; 
-            height: 36px; 
-            background: rgba(168, 85, 247, 0.4);
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            cursor: pointer; 
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
-            transition: 0.3s ease; 
-            border: 1px solid var(--card-border); 
-            user-select: none;
+        /* Стрелки ПК */
+        .arrow-btn {
+            position: absolute; top:50%; transform:translateY(-50%);
+            width:36px;height:36px;background:rgba(168,85,247,0.4);
+            border-radius:50%;display:flex;align-items:center;justify-content:center;
+            cursor:pointer;z-index:10;box-shadow:0 4px 20px rgba(168,85,247,0.5);
+            transition:0.3s;border:1px solid var(--card-border);user-select:none;
         }
-        .scroll-arrow svg { width: 18px; height: 18px; fill: var(--text-dark); pointer-events: none; }
-        .scroll-arrow:hover { 
-            background: rgba(168, 85, 247, 0.7); 
-            transform: translateY(-50%) scale(1.1); 
-            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.7); 
-        }
-        .scroll-arrow:active { transform: translateY(-50%) scale(0.95); }
-        .scroll-arrow.auto-scroll { 
-            background: rgba(168, 85, 247, 0.9); 
-            box-shadow: 0 0 40px rgba(168, 85, 247, 0.9); 
-            animation: pulse 0.8s ease-in-out infinite; 
-        }
-        @keyframes pulse { 
-            0%, 100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); } 
-            50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.9); } 
-        }
-        .scroll-arrow.left { left: 8px; }
-        .scroll-arrow.right { right: 8px; }
-        .scroll-arrow.hidden { opacity: 0; pointer-events: none; }
+        .arrow-btn svg { width:18px;height:18px;fill:var(--text-dark);pointer-events:none; }
+        .arrow-btn:hover { background:rgba(168,85,247,0.7);transform:translateY(-50%)scale(1.1); }
+        .arrow-btn.auto { background:rgba(168,85,247,0.9);animation:pulse 0.8s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{box-shadow:0 0 30px rgba(168,85,247,0.6)} 50%{box-shadow:0 0 50px rgba(168,85,247,0.9)} }
+        .arrow-left { left:8px; } .arrow-right { right:8px; }
+        .arrow-hidden { opacity:0;pointer-events:none; }
 
-        .portfolio-fade { position: absolute; top: 5px; bottom: 18px; width: 45px; pointer-events: none; z-index: 5; }
-        .portfolio-fade.left { left: 0; background: linear-gradient(to right, rgba(45,31,61,0.9), transparent); }
-        .portfolio-fade.right { right: 0; background: linear-gradient(to left, rgba(45,31,61,0.9), transparent); }
+        .fade-overlay { position:absolute;top:5px;bottom:18px;width:45px;pointer-events:none;z-index:5;}
+        .fade-left { left:0;background:linear-gradient(to right, rgba(45,31,61,0.9), transparent); }
+        .fade-right { right:0;background:linear-gradient(to left, rgba(45,31,61,0.9), transparent); }
 
-        .btn {
-            display: block; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-            color: #fff; padding: 18px; border-radius: 26px; text-decoration: none; 
-            font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; margin: 10px 0 30px 0;
-            box-shadow: 0 15px 40px var(--accent-glow); transition: 0.3s ease;
-            text-transform: uppercase; font-family: var(--font-body);
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5); }
-        .btn:active { transform: scale(0.98); }
+        .btn-main { display:block;background:linear-gradient(135deg,var(--accent),#9333ea);color:#fff;padding:18px;border-radius:26px;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:3px;margin:10px 0 30px 0;transition:0.3s; }
+        .btn-main:hover { transform:translateY(-3px); }
 
-        .socials { display: flex; gap: 16px; justify-content: center; }
-        .social-btn {
-            width: 50px; height: 50px; background: rgba(168, 85, 247, 0.2);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 8px 20px var(--shadow); text-decoration: none; transition: 0.3s ease;
-            border: 1px solid var(--card-border);
-        }
-        .social-btn:hover { transform: translateY(-5px); background: rgba(168, 85, 247, 0.4); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4); border-color: var(--accent); }
-        .social-btn svg { width: 22px; height: 22px; fill: var(--text-dark); transition: 0.3s ease; }
-        .social-btn:hover svg { fill: #fff; }
+        .socials { display:flex;gap:16px;justify-content:center; }
+        .social-link { width:50px;height:50px;background:rgba(168,85,247,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow);text-decoration:none;transition:0.3s;border:1px solid var(--card-border); }
+        .social-link:hover { transform:translateY(-5px);background:rgba(168,85,247,0.4);border-color:var(--accent); }
+        .social-link svg { width:22px;height:22px;fill:var(--text-dark);transition:0.3s; }
+        .social-link:hover svg { fill:#fff; }
 
-        .dot { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; box-shadow: 0 0 10px var(--accent-glow); }
-        @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); } 50% { opacity: 0.7; transform: translateY(-35px) scale(1.3); } }
+        .dot { position:absolute;background:var(--accent);border-radius:50%;opacity:0.5;animation:shine var(--d) infinite;box-shadow:0 0 10px var(--accent-glow); }
+        @keyframes shine { 0%,100%{opacity:0.2;transform:translateY(0)scale(1);} 50%{opacity:0.7;transform:translateY(-35px)scale(1.3);} }
 
         /* 🖼 ГАЛЕРЕЯ (Lightbox) */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            backdrop-filter: blur(10px);
-        }
-        .lightbox.active { display: flex; }
-        
-        .lightbox-content {
-            max-width: 95%;
-            max-height: 85%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px var(--accent-glow);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            border: 2px solid var(--accent);
-            transition: 0.3s ease;
-        }
-        .lightbox-close:hover { background: var(--accent); transform: rotate(90deg); }
-        .lightbox-close svg { width: 24px; height: 24px; fill: #fff; }
-        
-        .lightbox-nav {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .lightbox-arrow {
-            width: 48px;
-            height: 48px;
-            background: rgba(168, 85, 247, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s ease;
-            border: 2px solid var(--accent);
-        }
-        .lightbox-arrow:hover { background: var(--accent); transform: scale(1.1); }
-        .lightbox-arrow svg { width: 24px; height: 24px; fill: #fff; }
-        
-        .lightbox-counter {
-            color: #fff;
-            font-size: 1rem;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
+        .gallery-modal { display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.95);justify-content:center;align-items:center;flex-direction:column;backdrop-filter:blur(10px); }
+        .gallery-modal.active { display:flex; }
+        .gallery-img { max-width:95%;max-height:85%;border-radius:10px;box-shadow:0 0 30px var(--accent-glow); }
+        .gallery-close { position:absolute;top:20px;right:20px;width:44px;height:44px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;border:2px solid var(--accent);transition:0.3s; }
+        .gallery-close:hover { background:var(--accent);transform:rotate(90deg); }
+        .gallery-nav { display:flex;gap:20px;margin-top:20px; }
+        .gallery-nav-btn { width:48px;height:48px;background:rgba(168,85,247,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;border:2px solid var(--accent); }
+        .gallery-nav-btn:hover { background:var(--accent);transform:scale(1.1); }
+        .gallery-counter { color:#fff;font-size:1rem;margin-top:15px;opacity:0.8; }
+        .gallery-arrow-svg { width:24px;height:24px;fill:#fff; }
 
-        @media (min-width: 600px) {
-            body { padding: 35px 20px; }
-            .content { max-width: 450px; padding: 45px 25px; }
-            h1 { font-size: 2.8rem; }
-            .portfolio-item { min-width: 95px; height: 135px; border-radius: 22px; }
-            .portfolio-grid { gap: 10px; padding: 5px 55px 20px 55px; }
-            .scroll-arrow { width: 40px; height: 40px; }
-            .scroll-arrow svg { width: 20px; height: 20px; }
-        }
-
-        @media (min-width: 900px) {
-            body { padding: 50px 30px; }
-            .content { max-width: 500px; padding: 50px 30px; }
-            h1 { font-size: 3rem; }
-            .portfolio-item { min-width: 120px; height: 170px; border-radius: 24px; }
-            .portfolio-grid { gap: 12px; padding: 5px 60px 22px 60px; }
-            .scroll-arrow { width: 44px; height: 44px; left: 10px; right: 10px; }
-            .scroll-arrow svg { width: 22px; height: 22px; }
-        }
-
-        @media (hover: none) and (pointer: coarse) {
-            .scroll-arrow { display: none !important; }
-            .portfolio-fade { display: none; }
-            .portfolio-grid { padding-left: 8px !important; padding-right: 8px !important; }
-        }
+        /* МЕДИА ЗАПРОСЫ */
+        @media(min-width:600px) { body{padding:35px 20px;}.main-card{max-width:450px;padding:45px 25px;}h1{font-size:2.8rem;}.work-item{min-width:95px;height:135px;}.works-slider{gap:10px;padding:5px 55px 20px 55px;}.arrow-btn{width:40px;height:40px;}.arrow-btn svg{width:20px;height:20px;} }
+        @media(min-width:900px) { body{padding:50px 30px;}.main-card{max-width:500px;padding:50px 30px;}h1{font-size:3rem;}.work-item{min-width:120px;height:170px;}.works-slider{gap:12px;padding:5px 60px 22px 60px;}.arrow-btn{width:44px;height:44px;}.arrow-btn svg{width:22px;height:22px;} }
+        @media(hover:none)and(pointer:coarse) { .arrow-btn{display:none!important;}.fade-overlay{display:none;}.works-slider{padding-left:8px!important;padding-right:8px!important;} }
     </style>
 </head>
 <body>
-    <div class="glitter" id="glitter"></div>
-    
-    <!-- 🖼 ГАЛЕРЕЯ -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-close" onclick="closeLightbox()">
+    <!-- 💫 Блестки -->
+    <div class="glitter" id="glitterBg"></div>
+
+    <!-- 🖼 Галерея модальное окно -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-close" onclick="closeGallery()">
             <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </div>
-        <img class="lightbox-content" id="lightbox-img" src="" alt="Просмотр работы">
-        <div class="lightbox-nav">
-            <div class="lightbox-arrow" id="lightbox-prev">
-                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        <img class="gallery-img" id="galleryImgFull" src="" alt="Работа">
+        <div class="gallery-nav">
+            <div class="gallery-nav-btn" id="prevBtn" onclick="changePhoto(-1)">
+                <svg class="gallery-arrow-svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
             </div>
-            <div class="lightbox-arrow" id="lightbox-next">
-                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            <div class="gallery-nav-btn" id="nextBtn" onclick="changePhoto(1)">
+                <svg class="gallery-arrow-svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </div>
         </div>
-        <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
+        <div class="gallery-counter" id="galleryCounter">1 / 10</div>
     </div>
 
-    <div class="content">
+    <!-- Основной контент -->
+    <div class="main-card">
         <p class="brand">Lamara Dzhomidava</p>
         <h1>Визажист</h1>
+        
         <div class="services">
             <div class="service-card"><span>💄</span><p>Дневной<br>образ</p></div>
             <div class="service-card"><span>✨</span><p>Вечерний<br>стиль</p></div>
             <div class="service-card"><span>👰</span><p>Свадебный<br>макияж</p></div>
         </div>
-        <p class="portfolio-title">Мои работы</p>
         
-        <div class="portfolio-container" id="portfolioContainer">
-            <div class="portfolio-fade left"></div>
-            <div class="portfolio-fade right"></div>
-            <div class="scroll-arrow left" id="scrollLeft" aria-label="Листать влево">
+        <p class="work-title">Мои работы</p>
+        
+        <div class="works-container">
+            <div class="fade-overlay fade-left"></div>
+            <div class="fade-overlay fade-right"></div>
+            
+            <!-- Стрелки навигации -->
+            <div class="arrow-btn arrow-left" id="scrollLeft" aria-label="Назад">
                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
             </div>
-            <div class="scroll-arrow right" id="scrollRight" aria-label="Листать вправо">
+            <div class="arrow-btn arrow-right" id="scrollRight" aria-label="Вперёд">
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </div>
-            <div class="portfolio-grid" id="portfolioGrid">
-                <div class="portfolio-item" onclick="openLightbox(1)">
-                    <img src="1.jpg" alt="Работа 1" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(2)">
-                    <img src="2.jpg" alt="Работа 2" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(3)">
-                    <img src="3.jpg" alt="Работа 3" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(4)">
-                    <img src="4.jpg" alt="Работа 4" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(5)">
-                    <img src="5.jpg" alt="Работа 5" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(6)">
-                    <img src="6.jpg" alt="Работа 6" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(7)">
-                    <img src="7.jpg" alt="Работа 7" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(8)">
-                    <img src="8.jpg" alt="Работа 8" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(9)">
-                    <img src="9.jpg" alt="Работа 9" width="75" height="105" loading="lazy">
-                </div>
-                <div class="portfolio-item" onclick="openLightbox(10)">
-                    <img src="10.jpg" alt="Работа 10" width="75" height="105" loading="lazy">
-                </div>
+            
+            <!-- Фото галерея -->
+            <div class="works-slider" id="worksSlider">
+                <div class="work-item" onclick="openGallery(1)"><img src="1.jpg" alt="Работа 1" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(2)"><img src="2.jpg" alt="Работа 2" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(3)"><img src="3.jpg" alt="Работа 3" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(4)"><img src="4.jpg" alt="Работа 4" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(5)"><img src="5.jpg" alt="Работа 5" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(6)"><img src="6.jpg" alt="Работа 6" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(7)"><img src="7.jpg" alt="Работа 7" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(8)"><img src="8.jpg" alt="Работа 8" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(9)"><img src="9.jpg" alt="Работа 9" loading="lazy"></div>
+                <div class="work-item" onclick="openGallery(10)"><img src="10.jpg" alt="Работа 10" loading="lazy"></div>
             </div>
         </div>
 
-        <a href="https://wa.me/79628848880" target="_blank" rel="noopener noreferrer" class="btn">Записаться</a>
+        <a href="https://wa.me/79628848880" target="_blank" class="btn-main">Записаться</a>
+
         <div class="socials">
-            <a href="https://www.instagram.com/lamara_dzhomidava" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <a href="https://www.instagram.com/lamara_dzhomidava" target="_blank" class="social-link" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://wa.me/79628848880" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+            <a href="https://wa.me/79628848880" target="_blank" class="social-link" aria-label="WhatsApp">
                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.058-4.51 10.06-10.059.002-2.689-1.047-5.215-2.951-7.121-1.903-1.905-4.431-2.956-7.121-2.957-5.548 0-10.059 4.511-10.06 10.06-.001 2.132.58 4.212 1.682 6.001l-.993 3.634 3.731-.979zm11.387-5.477c-.31-.156-1.834-.905-2.112-1.006-.277-.101-.48-.151-.68.151-.201.302-.777 1.006-.951 1.207-.174.202-.347.226-.658.071-.311-.155-1.314-.484-2.503-1.545-.925-.825-1.549-1.844-1.73-2.147-.181-.302-.019-.465.136-.619.139-.139.31-.362.466-.544.156-.181.208-.312.311-.518.104-.207.052-.387-.026-.543-.078-.156-.681-1.636-.933-2.245-.245-.594-.494-.514-.68-.523-.176-.009-.378-.011-.58-.011-.202 0-.53.075-.807.377-.277.301-1.059 1.031-1.059 2.516 0 1.485 1.084 2.918 1.235 3.12.151.201 2.134 3.259 5.168 4.57.721.311 1.285.498 1.724.638.724.23 1.383.197 1.904.12.581-.086 1.834-.75 2.091-1.475.258-.725.258-1.345.181-1.475-.077-.131-.282-.208-.593-.364z"/></svg>
             </a>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // ✨ Блестки
-            const bg = document.getElementById('glitter');
-            if (bg) {
-                for (let i = 0; i < 35; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'dot';
-                    dot.style.left = Math.random() * 100 + '%';
-                    dot.style.top = Math.random() * 100 + '%';
-                    const size = Math.random() * 2 + 0.5 + 'px';
-                    dot.style.width = size; dot.style.height = size;
-                    dot.style.setProperty('--d', Math.random() * 5 + 3 + 's');
-                    dot.style.animationDelay = Math.random() * 5 + 's';
-                    bg.appendChild(dot);
-                }
+        // ✨ Генерация блесток
+        const glitter = document.getElementById('glitterBg');
+        if (glitter) {
+            for (let i = 0; i < 35; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.top = Math.random() * 100 + '%';
+                const size = Math.random() * 2 + 0.5 + 'px';
+                dot.style.width = size; dot.style.height = size;
+                dot.style.setProperty('--d', Math.random() * 5 + 3 + 's');
+                dot.style.animationDelay = Math.random() * 5 + 's';
+                glitter.appendChild(dot);
             }
+        }
 
-            // 💻 ПОЧИНЕНАЯ ЛОГИКА СТРЕЛОК (ПК)
-            const grid = document.getElementById('portfolioGrid');
-            const scrollLeft = document.getElementById('scrollLeft');
-            const scrollRight = document.getElementById('scrollRight');
-            
-            if (!grid || !scrollLeft || !scrollRight) return;
-            
-            let autoScrollTimer = null;
-            const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-            
-            if (isDesktop) {
-                
-                function scrollByClick(direction) {
-                    if (autoScrollTimer) {
-                        clearInterval(autoScrollTimer);
-                        autoScrollTimer = null;
-                        scrollLeft.classList.remove('auto-scroll');
-                        scrollRight.classList.remove('auto-scroll');
-                    }
-                    const itemWidth = window.innerWidth < 600 ? 83 : (window.innerWidth < 900 ? 105 : 132);
-                    grid.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
-                }
-                
-                // 🔧 ОБЕ СТРЕЛКИ РАБОТАЮТ
-                scrollLeft.addEventListener('click', () => scrollByClick(-1));
-                scrollRight.addEventListener('click', () => scrollByClick(1));
-                
-                // Авто-скролл при наведении
-                function startAutoScroll(direction) {
-                    if (autoScrollTimer) clearInterval(autoScrollTimer);
-                    const arrow = direction < 0 ? scrollLeft : scrollRight;
-                    arrow.classList.add('auto-scroll');
-                    autoScrollTimer = setInterval(() => {
-                        grid.scrollLeft += direction * 0.3;
-                        updateArrows();
-                    }, 50);
-                }
-                
-                function stopAutoScroll() {
-                    if (autoScrollTimer) {
-                        clearInterval(autoScrollTimer);
-                        autoScrollTimer = null;
-                    }
-                    scrollLeft.classList.remove('auto-scroll');
-                    scrollRight.classList.remove('auto-scroll');
-                }
-                
-                scrollLeft.addEventListener('mouseenter', () => startAutoScroll(-1));
-                scrollLeft.addEventListener('mouseleave', stopAutoScroll);
-                scrollRight.addEventListener('mouseenter', () => startAutoScroll(1));
-                scrollRight.addEventListener('mouseleave', stopAutoScroll);
-            }
-            
-            // Обновление видимости стрелок
-            function updateArrows() {
-                if (!scrollLeft || !scrollRight) return;
-                
-                const scrollPos = grid.scrollLeft;
-                const maxScroll = grid.scrollWidth - grid.clientWidth;
-                
-                if (scrollPos > 10) {
-                    scrollLeft.classList.remove('hidden');
-                } else {
-                    scrollLeft.classList.add('hidden');
-                }
-                
-                if (scrollPos < maxScroll - 10) {
-                    scrollRight.classList.remove('hidden');
-                } else {
-                    scrollRight.classList.add('hidden');
-                }
-            }
-            
-            grid.addEventListener('scroll', updateArrows);
-            window.addEventListener('resize', updateArrows);
-            setTimeout(updateArrows, 500);
+        // 🔄 Навигация портфолио
+        const slider = document.getElementById('worksSlider');
+        const leftArrow = document.getElementById('scrollLeft');
+        const rightArrow = document.getElementById('scrollRight');
+        let autoScrollTimer = null;
+        const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-            // 🖼 ГАЛЕРЕЯ (Lightbox)
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCounter = document.getElementById('lightbox-counter');
-            const lightboxPrev = document.getElementById('lightbox-prev');
-            const lightboxNext = document.getElementById('lightbox-next');
-            
-            let currentPhotoIndex = 0;
-            const totalPhotos = 10;
-            
-            // Открыть галерею
-            function openLightbox(index) {
-                currentPhotoIndex = index;
-                updateLightboxImage();
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Запретить скролл фона
+        // Настройки прокрутки
+        const SCROLL_SPEED = 0.3; // Скорость авто-скролла
+        const CLICK_AMOUNTS = { // Размеры одного фото для клика
+            mobile: 83, tablet: 105, pc: 132
+        };
+
+        function getClickAmount() {
+            const w = window.innerWidth;
+            return w < 600 ? CLICK_AMOUNTS.mobile : (w < 900 ? CLICK_AMOUNTS.tablet : CLICK_AMOUNTS.pc);
+        }
+
+        function clickScroll(direction) {
+            // Остановка авто-скролла при клике
+            stopAutoScroll();
+            slider.scrollBy({ left: direction * getClickAmount(), behavior: 'smooth' });
+        }
+
+        function startAutoScroll(direction) {
+            if (autoScrollTimer) clearInterval(autoScrollTimer);
+            const arrow = direction < 0 ? leftArrow : rightArrow;
+            arrow.classList.add('auto');
+            autoScrollTimer = setInterval(() => {
+                slider.scrollLeft += direction * SCROLL_SPEED;
+                updateArrowsVisibility();
+            }, 50);
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollTimer) {
+                clearInterval(autoScrollTimer);
+                autoScrollTimer = null;
             }
-            
-            // Закрыть галерею
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            
-            // Обновить изображение
-            function updateLightboxImage() {
-                lightboxImg.src = `${currentPhotoIndex}.jpg`;
-                lightboxCounter.textContent = `${currentPhotoIndex} / ${totalPhotos}`;
-                // Блокируем предыдущее/следующее если это край
-                lightboxPrev.style.opacity = currentPhotoIndex === 1 ? '0.3' : '1';
-                lightboxNext.style.opacity = currentPhotoIndex === totalPhotos ? '0.3' : '1';
-            }
-            
-            // Следующее фото
-            lightboxNext.addEventListener('click', () => {
-                if (currentPhotoIndex < totalPhotos) {
-                    currentPhotoIndex++;
-                    updateLightboxImage();
-                }
-            });
-            
-            // Предыдущее фото
-            lightboxPrev.addEventListener('click', () => {
-                if (currentPhotoIndex > 1) {
-                    currentPhotoIndex--;
-                    updateLightboxImage();
-                }
-            });
-            
-            // Закрытие по клику на фон
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-            
-            // Управление клавиатурой
-            document.addEventListener('keydown', (e) => {
-                if (!lightbox.classList.contains('active')) return;
-                
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft' && currentPhotoIndex > 1) {
-                    currentPhotoIndex--;
-                    updateLightboxImage();
-                } else if (e.key === 'ArrowRight' && currentPhotoIndex < totalPhotos) {
-                    currentPhotoIndex++;
-                    updateLightboxImage();
-                }
-            });
+            leftArrow.classList.remove('auto');
+            rightArrow.classList.remove('auto');
+        }
+
+        // События стрелок
+        if (isDesktop && leftArrow && rightArrow) {
+            leftArrow.addEventListener('click', () => clickScroll(-1));
+            rightArrow.addEventListener('click', () => clickScroll(1));
+            leftArrow.addEventListener('mouseenter', () => startAutoScroll(-1));
+            leftArrow.addEventListener('mouseleave', stopAutoScroll);
+            rightArrow.addEventListener('mouseenter', () => startAutoScroll(1));
+            rightArrow.addEventListener('mouseleave', stopAutoScroll);
+        }
+
+        // Обновление видимости стрелок
+        function updateArrowsVisibility() {
+            if (!leftArrow || !rightArrow) return;
+            const pos = slider.scrollLeft;
+            const max = slider.scrollWidth - slider.clientWidth;
+            leftArrow.classList.toggle('arrow-hidden', pos <= 10);
+            rightArrow.classList.toggle('arrow-hidden', pos >= max - 10);
+        }
+
+        slider.addEventListener('scroll', updateArrowsVisibility);
+        window.addEventListener('resize', updateArrowsVisibility);
+        setTimeout(updateArrowsVisibility, 500);
+
+
+        // 🖼 Галерея (Lightbox)
+        const modal = document.getElementById('galleryModal');
+        const fullImg = document.getElementById('galleryImgFull');
+        const counter = document.getElementById('galleryCounter');
+        let currentPhoto = 1;
+        const totalPhotos = 10;
+
+        function openGallery(num) {
+            currentPhoto = num;
+            updateGalleryView();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changePhoto(dir) {
+            currentPhoto += dir;
+            if (currentPhoto > totalPhotos) currentPhoto = 1;
+            if (currentPhoto < 1) currentPhoto = totalPhotos;
+            updateGalleryView();
+        }
+
+        function updateGalleryView() {
+            fullImg.src = `${currentPhoto}.jpg`;
+            counter.textContent = `${currentPhoto} / ${totalPhotos}`;
+            // Управление активностью кнопок
+            document.getElementById('prevBtn').style.pointerEvents = currentPhoto === 1 ? 'none' : 'auto';
+            document.getElementById('nextBtn').style.pointerEvents = currentPhoto === totalPhotos ? 'none' : 'auto';
+        }
+
+        // Закрытие по клику на фон
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeGallery();
+        });
+
+        // Управление клавиатурой
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeGallery();
+            if (e.key === 'ArrowLeft' && currentPhoto > 1) changePhoto(-1);
+            if (e.key === 'ArrowRight' && currentPhoto < totalPhotos) changePhoto(1);
         });
     </script>
 </body>
