@@ -64,24 +64,31 @@
         
         .works-container { position: relative; width: 100%; margin-bottom: 18px; overflow: visible; }
         
-        /* 🔧 ТЕЛЕФОН: СЕТКА 2 В РЯД */
+        /* 📱 ТЕЛЕФОН: 2 фото в ряду со скроллом */
         .works-slider { 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 фото в ряд */
+            display: flex;
             gap: 8px;
-            padding: 5px;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 5px 8px 18px 8px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             width: 100%;
             position: relative;
             z-index: 3;
         }
+        .works-slider::-webkit-scrollbar { display: none; }
         
         .work-item {
-            width: 100%;
+            min-width: calc(50% - 4px); /* 2 фото в ряду */
             height: 130px;
             background: rgba(168,85,247,0.15);
             border-radius: 20px;
             overflow: hidden;
+            scroll-snap-align: start;
             border: 1px solid var(--card-border);
+            flex-shrink: 0;
             transition: 0.3s;
             cursor: pointer;
             display: flex;
@@ -103,6 +110,7 @@
             border-radius:50%;display:flex;align-items:center;justify-content:center;
             cursor:pointer;z-index:10;box-shadow:0 4px 20px rgba(168,85,247,0.5);
             transition:0.3s;border:1px solid var(--card-border);user-select:none;
+            display: none; /* Скрыты на телефоне по умолчанию */
         }
         .arrow-btn svg { width:18px;height:18px;fill:var(--text-dark);pointer-events:none; }
         .arrow-btn:hover { background:rgba(168,85,247,0.7);transform:translateY(-50%)scale(1.1); }
@@ -111,7 +119,7 @@
         .arrow-left { left:8px; } .arrow-right { right:8px; }
         .arrow-hidden { opacity:0;pointer-events:none; }
 
-        .fade-overlay { position:absolute;top:5px;bottom:18px;width:45px;pointer-events:none;z-index:5;}
+        .fade-overlay { position:absolute;top:5px;bottom:18px;width:45px;pointer-events:none;z-index:5; display: none; }
         .fade-left { left:0;background:linear-gradient(to right, rgba(45,31,61,0.9), transparent); }
         .fade-right { right:0;background:linear-gradient(to left, rgba(45,31,61,0.9), transparent); }
 
@@ -139,34 +147,22 @@
         .gallery-counter { color:#fff;font-size:1rem;margin-top:15px;opacity:0.8; }
         .gallery-arrow-svg { width:24px;height:24px;fill:#fff; }
 
-        /* 📱 ТЕЛЕФОН: Скрываем стрелки и fade */
-        @media(hover:none)and(pointer:coarse) { 
-            .arrow-btn{display:none!important;}
-            .fade-overlay{display:none;}
-            .works-slider{grid-template-columns:repeat(2,1fr);gap:8px;}
-        }
-
-        /* 📟 ПЛАНШЕТ: Горизонтальный скролл */
+        /* 📟 ПЛАНШЕТ: Горизонтальный скролл со стрелками */
         @media(min-width:600px) { 
             body{padding:35px 20px;}
             .main-card{max-width:450px;padding:45px 25px;}
             h1{font-size:2.8rem;}
             .works-slider{
-                display:flex;
                 gap:10px;
-                overflow-x:auto;
-                overflow-y:visible;
                 padding:5px 55px 20px 55px;
-                scroll-snap-type:x mandatory;
-                scrollbar-width:none;
             }
-            .works-slider::-webkit-scrollbar{display:none;}
-            .work-item{min-width:95px;height:155px;flex-shrink:0;scroll-snap-align:start;}
-            .arrow-btn{width:40px;height:40px;}
+            .work-item{min-width:95px;height:155px;}
+            .arrow-btn{display:flex;width:40px;height:40px;}
             .arrow-btn svg{width:20px;height:20px;}
+            .fade-overlay{display:block;}
         }
 
-        /* 💻 ПК: Горизонтальный скролл */
+        /* 💻 ПК: Горизонтальный скролл со стрелками (КАК БЫЛО) */
         @media(min-width:900px) { 
             body{padding:50px 30px;}
             .main-card{max-width:500px;padding:50px 30px;}
@@ -269,7 +265,7 @@
         const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
         const SCROLL_SPEED = 0.3;
-        const CLICK_AMOUNTS = { mobile: 83, tablet: 105, pc: 132 };
+        const CLICK_AMOUNTS = { mobile: 166, tablet: 105, pc: 132 }; // 🔧 Телефон: 2 фото = 166px
 
         function getClickAmount() {
             const w = window.innerWidth;
