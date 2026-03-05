@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- Иконка помадки (встроена прямо в код) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💄</text></svg>">
+    <!-- Иконка -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💄</text></svg>">
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <title>Ламара Джомидава | Визажист</title>
 
     <style>
         :root {
-            --rose-gold: #b76e79;
-            --text-dark: #4a3437;
-            --bg-rose: linear-gradient(135deg, #fce4ec 0%, #f1d5d2 25%, #e1b1ab 50%, #f1d5d2 75%, #fce4ec 100%);
+            /* 🌌 Футуристический фиолетовый (тёмный, глубокий) */
+            --accent: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.4);
+            --accent-hover: #9333ea;
+            --text-dark: #f3e8ff;
+            --text-light: #c4b5d9;
+            --bg-dark: linear-gradient(135deg, #1a1025 0%, #2d1f3d 25%, #3d2855 50%, #2d1f3d 75%, #1a1025 100%);
+            --card-bg: rgba(45, 31, 61, 0.7);
+            --card-border: rgba(168, 85, 247, 0.3);
+            --shadow: rgba(168, 85, 247, 0.15);
+            --card-glow: 0 0 60px rgba(168, 85, 247, 0.2);
+            
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -21,10 +37,12 @@
         body {
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center;
-            background: var(--bg-rose); background-size: 400% 400%;
-            animation: silkMove 15s ease infinite;
-            color: var(--text-dark); font-family: -apple-system, system-ui, sans-serif;
+            background: var(--bg-dark); background-size: 400% 400%;
+            animation: silkMove 20s ease infinite;
+            color: var(--text-dark); 
+            font-family: var(--font-body);
             padding: 40px 20px; overflow-x: hidden;
+            line-height: 1.5;
         }
 
         @keyframes silkMove {
@@ -39,68 +57,226 @@
             position: relative; z-index: 2; text-align: center; 
             width: 100%; max-width: 420px;
             padding: 50px 25px;
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--card-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(183, 110, 121, 0.15);
+            border-radius: 50px; 
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-glow);
             animation: fadeIn 1.2s ease-out;
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        p.brand { font-size: 0.8rem; color: var(--rose-gold); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 15px; font-weight: 600; }
-        h1 { font-size: 2.6rem; font-weight: 300; margin-bottom: 35px; color: var(--text-dark); letter-spacing: -1px; }
-
-        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 35px; }
-        .service-card {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 15px 4px; border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        p.brand { 
+            font-size: 0.75rem; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            letter-spacing: 8px; 
+            margin-bottom: 20px; 
+            font-weight: 600; 
+            font-family: var(--font-body);
+            text-shadow: 0 0 20px var(--accent-glow);
         }
-        .service-card span { font-size: 1.5rem; display: block; margin-bottom: 5px; }
-        .service-card p { font-size: 0.6rem; text-transform: uppercase; font-weight: 800; color: #7d5a5e; line-height: 1.3; }
-
-        .portfolio-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; color: var(--rose-gold); font-weight: 700; }
-        .portfolio-grid { 
-            display: flex; gap: 12px; overflow-x: auto; 
-            padding: 5px 5px 25px 5px; margin-bottom: 20px;
-            scroll-snap-type: x mandatory; scrollbar-width: none;
-        }
-        .portfolio-grid::-webkit-scrollbar { display: none; }
         
-        .portfolio-item {
-            min-width: 160px; height: 220px; 
-            background: rgba(255,255,255,0.2); 
-            border-radius: 25px; overflow: hidden;
-            scroll-snap-align: center; border: 1px solid rgba(255,255,255,0.5);
+        h1 { 
+            font-size: 3rem; 
+            font-weight: 300; 
+            margin-bottom: 40px; 
+            color: var(--text-dark); 
+            letter-spacing: -1.5px;
+            font-family: var(--font-heading);
+            line-height: 1.1;
+            text-shadow: 0 0 30px var(--accent-glow);
         }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .btn {
-            display: block; background: var(--text-dark); color: #fff;
-            padding: 22px; border-radius: 25px;
-            text-decoration: none; font-size: 0.9rem; font-weight: 600;
-            letter-spacing: 3px; margin-bottom: 40px;
-            box-shadow: 0 15px 30px rgba(74, 52, 55, 0.25);
+        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 40px; }
+        .service-card {
+            background: rgba(168, 85, 247, 0.1);
+            padding: 18px 6px; border-radius: 24px;
+            border: 1px solid var(--card-border);
             transition: 0.3s;
         }
-        .btn:active { transform: scale(0.96); }
-
-        .socials { display: flex; gap: 20px; justify-content: center; }
-        .social-btn {
-            width: 60px; height: 60px; background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 8px 15px rgba(183, 110, 121, 0.1); text-decoration: none; transition: 0.3s;
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow);
+            background: rgba(168, 85, 247, 0.2);
+            border-color: var(--accent);
         }
-        .social-btn svg { width: 26px; height: 26px; fill: var(--text-dark); }
+        .service-card span { font-size: 1.7rem; display: block; margin-bottom: 6px; }
+        .service-card p { 
+            font-size: 0.55rem; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            color: var(--text-light); 
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-title { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin: 10px 0 15px 0; 
+            color: var(--accent); 
+            font-weight: 600;
+            font-family: var(--font-body);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
         
-        @media (hover: hover) {
-            .btn:hover { transform: translateY(-3px); background: #3d2b2d; }
-            .social-btn:hover { transform: translateY(-5px); background: #fff; }
+        /* 🔄 Контейнер для портфолио */
+        .portfolio-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 25px;
+            overflow: hidden;
         }
 
-        .dot { position: absolute; background: #fff; border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; }
-        @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 0.7; transform: translateY(-30px) scale(1.3); } }
+        .portfolio-grid { 
+            display: flex; 
+            gap: 12px; 
+            overflow-x: auto; 
+            overflow-y: hidden;
+            padding: 5px 10px 25px 10px; 
+            scroll-snap-type: x mandatory; 
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        .portfolio-grid::-webkit-scrollbar { 
+            display: none; 
+        }
+        
+        .portfolio-item {
+            min-width: 145px; 
+            height: 210px; 
+            background: rgba(168, 85, 247, 0.15); 
+            border-radius: 28px; 
+            overflow: hidden;
+            scroll-snap-align: start; 
+            border: 1px solid var(--card-border);
+            flex-shrink: 0; 
+            transition: 0.3s;
+        }
+        .portfolio-item:hover { 
+            transform: scale(1.03); 
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* ➡️ Кликабельные стрелки с авто-скроллом */
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(168, 85, 247, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+            user-select: none;
+        }
+        .scroll-arrow svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-dark);
+        }
+        .scroll-arrow:hover {
+            background: rgba(168, 85, 247, 0.6);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6);
+        }
+        .scroll-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        .scroll-arrow.auto-scroll {
+            background: rgba(168, 85, 247, 0.8);
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+            animation: pulse 0.8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); }
+            50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.9); }
+        }
+        .scroll-arrow.left { left: 0; }
+        .scroll-arrow.right { right: 0; }
+        
+        .scroll-arrow.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* 🌫 Fade эффект по краям */
+        .portfolio-fade {
+            position: absolute;
+            top: 5px;
+            bottom: 25px;
+            width: 50px;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .portfolio-fade.left {
+            left: 0;
+            background: linear-gradient(to right, rgba(45,31,61,0.95), transparent);
+        }
+        .portfolio-fade.right {
+            right: 0;
+            background: linear-gradient(to left, rgba(45,31,61,0.95), transparent);
+        }
+
+        .btn {
+            display: block; 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: #fff;
+            padding: 24px; 
+            border-radius: 30px;
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            letter-spacing: 4px; 
+            margin: 10px 0 45px 0;
+            box-shadow: 0 15px 40px var(--accent-glow);
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-family: var(--font-body);
+        }
+        .btn:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5);
+        }
+        .btn:active { transform: scale(0.98); }
+
+        .socials { display: flex; gap: 22px; justify-content: center; }
+        .social-btn {
+            width: 62px; height: 62px; 
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 8px 20px var(--shadow); 
+            text-decoration: none; 
+            transition: 0.3s;
+            border: 1px solid var(--card-border);
+        }
+        .social-btn:hover { 
+            transform: translateY(-5px); 
+            background: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
+            border-color: var(--accent);
+        }
+        .social-btn svg { width: 28px; height: 28px; fill: var(--text-dark); transition: 0.3s; }
+        .social-btn:hover svg { fill: #fff; }
+
+        /* ✨ Блестки */
+        .dot { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; box-shadow: 0 0 10px var(--accent-glow); }
+        @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); } 50% { opacity: 0.7; transform: translateY(-35px) scale(1.3); } }
     </style>
 </head>
 <body>
@@ -118,40 +294,118 @@
         </div>
 
         <p class="portfolio-title">Мои работы</p>
-        <div class="portfolio-grid">
-            <div class="portfolio-item"><img src="https://images.unsplash.com"></div>
-            <div class="portfolio-item"><img src="https://images.unsplash.com"></div>
-            <div class="portfolio-item"><img src="https://images.unsplash.com"></div>
+        
+        <!-- 🖼 Портфолио с твоими 10 фото -->
+        <div class="portfolio-container" id="portfolioContainer">
+            <div class="portfolio-fade left"></div>
+            <div class="portfolio-fade right"></div>
+            
+            <!-- Стрелки с авто-прокруткой -->
+            <div class="scroll-arrow left" id="scrollLeft">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </div>
+            <div class="scroll-arrow right" id="scrollRight">
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </div>
+            
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item"><img src="https://i.ibb.co/20CX22Qp/1.jpg" alt="Работа 1" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/35dxcRSq/2.jpg" alt="Работа 2" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/B5wvjwpM/3.jpg" alt="Работа 3" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/w3xctz3/4.jpg" alt="Работа 4" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/1tH9TZG2/5.jpg" alt="Работа 5" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/xS81YVgG/6.jpg" alt="Работа 6" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/KvNVbGK/7.jpg" alt="Работа 7" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/DDRqKL8g/8.jpg" alt="Работа 8" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/TqMpCqw0/9.jpg" alt="Работа 9" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/HpVFKb99/10.jpg" alt="Работа 10" loading="lazy"></div>
+            </div>
         </div>
 
-        <!-- Ссылка с твоим номером -->
-        <a href="https://wa.me/79628848880" target="_blank" class="btn">ЗАПИСАТЬСЯ</a>
+        <a href="https://wa.me/79628848880" target="_blank" rel="noopener noreferrer" class="btn">Записаться</a>
 
         <div class="socials">
-            <!-- Ссылка на твой Instagram -->
-            <a href="https://www.instagram.com/lamara_dzhomidava" target="_blank" class="social-btn">
+            <a href="https://www.instagram.com/lamara_dzhomidava" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <!-- Ссылка на твой WhatsApp (иконка) -->
-            <a href="https://wa.me/79628848880" target="_blank" class="social-btn">
+            <a href="https://wa.me/79628848880" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.058-4.51 10.06-10.059.002-2.689-1.047-5.215-2.951-7.121-1.903-1.905-4.431-2.956-7.121-2.957-5.548 0-10.059 4.511-10.06 10.06-.001 2.132.58 4.212 1.682 6.001l-.993 3.634 3.731-.979zm11.387-5.477c-.31-.156-1.834-.905-2.112-1.006-.277-.101-.48-.151-.68.151-.201.302-.777 1.006-.951 1.207-.174.202-.347.226-.658.071-.311-.155-1.314-.484-2.503-1.545-.925-.825-1.549-1.844-1.73-2.147-.181-.302-.019-.465.136-.619.139-.139.31-.362.466-.544.156-.181.208-.312.311-.518.104-.207.052-.387-.026-.543-.078-.156-.681-1.636-.933-2.245-.245-.594-.494-.514-.68-.523-.176-.009-.378-.011-.58-.011-.202 0-.53.075-.807.377-.277.301-1.059 1.031-1.059 2.516 0 1.485 1.084 2.918 1.235 3.12.151.201 2.134 3.259 5.168 4.57.721.311 1.285.498 1.724.638.724.23 1.383.197 1.904.12.581-.086 1.834-.75 2.091-1.475.258-.725.258-1.345.181-1.475-.077-.131-.282-.208-.593-.364z"/></svg>
             </a>
         </div>
     </div>
 
     <script>
+        // ✨ Блестки
         const bg = document.getElementById('glitter');
-        for (let i = 0; i < 45; i++) {
+        for (let i = 0; i < 40; i++) {
             const dot = document.createElement('div');
             dot.className = 'dot';
             dot.style.left = Math.random() * 100 + '%';
             dot.style.top = Math.random() * 100 + '%';
-            const size = Math.random() * 3 + 1 + 'px';
+            const size = Math.random() * 2.5 + 0.8 + 'px';
             dot.style.width = size; dot.style.height = size;
-            dot.style.setProperty('--d', Math.random() * 4 + 3 + 's');
+            dot.style.setProperty('--d', Math.random() * 5 + 4 + 's');
             dot.style.animationDelay = Math.random() * 5 + 's';
             bg.appendChild(dot);
         }
+
+        // 🔄 Автоматическая прокрутка при наведении (ОЧЕНЬ ПЛАВНАЯ)
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        const scrollLeft = document.getElementById('scrollLeft');
+        const scrollRight = document.getElementById('scrollRight');
+        
+        let autoScrollInterval = null;
+        const scrollSpeed = 100;      // Интервал между шагами (мс)
+        const scrollAmount = 0.8;     // Пикселей за шаг
+
+        function startAutoScroll(direction) {
+            stopAutoScroll();
+            const activeArrow = direction < 0 ? scrollLeft : scrollRight;
+            activeArrow.classList.add('auto-scroll');
+            autoScrollInterval = setInterval(() => {
+                portfolioGrid.scrollBy({ left: direction * scrollAmount, behavior: 'auto' });
+                updateArrows();
+            }, scrollSpeed);
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+            scrollLeft.classList.remove('auto-scroll');
+            scrollRight.classList.remove('auto-scroll');
+        }
+
+        // 🖱 События для стрелок
+        scrollLeft.addEventListener('mouseenter', () => startAutoScroll(-1));
+        scrollLeft.addEventListener('mouseleave', stopAutoScroll);
+        scrollLeft.addEventListener('touchstart', (e) => { e.preventDefault(); startAutoScroll(-1); });
+        scrollLeft.addEventListener('touchend', stopAutoScroll);
+        scrollLeft.addEventListener('click', () => portfolioGrid.scrollBy({ left: -150, behavior: 'smooth' }));
+
+        scrollRight.addEventListener('mouseenter', () => startAutoScroll(1));
+        scrollRight.addEventListener('mouseleave', stopAutoScroll);
+        scrollRight.addEventListener('touchstart', (e) => { e.preventDefault(); startAutoScroll(1); });
+        scrollRight.addEventListener('touchend', stopAutoScroll);
+        scrollRight.addEventListener('click', () => portfolioGrid.scrollBy({ left: 150, behavior: 'smooth' }));
+
+        // ➡️ Управление видимостью стрелок
+        function updateArrows() {
+            const scrollLeftPos = portfolioGrid.scrollLeft;
+            const scrollWidth = portfolioGrid.scrollWidth;
+            const clientWidth = portfolioGrid.clientWidth;
+            
+            if (scrollLeftPos <= 10) scrollLeft.classList.add('hidden');
+            else scrollLeft.classList.remove('hidden');
+            
+            if (scrollLeftPos >= scrollWidth - clientWidth - 10) scrollRight.classList.add('hidden');
+            else scrollRight.classList.remove('hidden');
+        }
+
+        portfolioGrid.addEventListener('scroll', updateArrows);
+        window.addEventListener('resize', updateArrows);
+        setTimeout(updateArrows, 100);
     </script>
 </body>
 </html>
