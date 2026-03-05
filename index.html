@@ -2,55 +2,59 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скоро открытие</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Скоро открытие | Lamara Dzhomidava</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
             height: 100vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
-            color: #ffffff; font-family: 'Segoe UI', sans-serif;
-            overflow: hidden; cursor: crosshair;
+            background: #020617;
+            color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden; touch-action: none;
         }
-        canvas { position: absolute; top: 0; left: 0; z-index: 1; }
-        .content { position: relative; z-index: 2; text-align: center; pointer-events: none; margin-bottom: 50px; }
-        h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 10px; letter-spacing: -2px; background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p { font-size: 1.1rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 10px; }
+        canvas { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; }
+        
+        .content { 
+            position: relative; z-index: 2; 
+            text-align: center; pointer-events: none; 
+            margin-bottom: 50px; padding: 0 20px; 
+            animation: fadeIn 2s ease-out;
+        }
+        h1 { 
+            font-size: clamp(2rem, 10vw, 4.5rem); 
+            margin-bottom: 12px; letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+        p { 
+            font-size: 0.9rem; color: #38bdf8; 
+            text-transform: uppercase; letter-spacing: 8px; 
+            font-weight: 300; opacity: 0.8;
+        }
 
-        /* Соцсети */
-        .socials { position: relative; z-index: 3; display: flex; gap: 25px; }
+        .socials { position: relative; z-index: 3; display: flex; gap: 20px; }
         .social-link {
-            width: 70px; height: 70px;
+            width: 65px; height: 65px;
             display: flex; justify-content: center; align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 22px; /* Мягкий квадрат */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
         }
-        svg { width: 32px; height: 32px; fill: white; transition: 0.3s; }
+        svg { width: 30px; height: 30px; fill: white; transition: 0.3s; }
 
-        /* Цвета при наведении */
-        .social-link.inst:hover { 
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            box-shadow: 0 10px 25px rgba(214, 36, 159, 0.5);
-            border-color: transparent;
-        }
-        .social-link.tg:hover { 
-            background: #0088cc;
-            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.5);
-            border-color: transparent;
-        }
-        .social-link.wa:hover { 
-            background: #25d366;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-            border-color: transparent;
-        }
-        .social-link:hover { transform: translateY(-12px) scale(1.1); }
-        .social-link:hover svg { fill: white; transform: scale(1.1); }
+        /* Эффекты при наведении и нажатии */
+        .inst:hover, .inst:active { background: #d6249f; box-shadow: 0 10px 25px rgba(214, 36, 159, 0.4); border-color: transparent; }
+        .tg:hover, .tg:active { background: #0088cc; box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4); border-color: transparent; }
+        .wa:hover, .wa:active { background: #25d366; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); border-color: transparent; }
+        
+        .social-link:hover { transform: translateY(-10px) scale(1.05); }
+        .social-link:active { transform: scale(0.95); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -62,66 +66,107 @@
     </div>
 
     <div class="socials">
-        <!-- Instagram -->
         <a href="https://instagram.com/lamara_dzhomidava" target="_blank" class="social-link inst">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z""")/>></svg>
         </a>
-        <!-- Telegram -->
         <a href="https://t.me/Lamara2801" target="_blank" class="social-link tg">
-            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 8.146l-2.003 9.444c-.149.659-.539.822-1.091.511l-3.051-2.25-1.473 1.417c-.163.163-.299.299-.614.299l.219-3.107 5.654-5.107c.246-.219-.054-.341-.381-.122l-6.99 4.402-3.011-.941c-.654-.205-.667-.654.137-.967l11.77-4.536c.544-.199 1.02.126.833.85z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 8.146l-2.003 9.444c-.149.659-.539.822-1.091.511l-3.051-2.25-1.473 1.417c-.163.163-.299.299-.614.299l.219-3.107 5.654-5.107c.246-.219-.054-.341-.381-.122l-6.99 4.402-3.011-.941c-.654-.205-.667-.654.137-.967l11.77-4.536c.544-.199 1.02.126.833.85z""")/>></svg>
         </a>
-        <!-- WhatsApp -->
-        <a href="#" target="_blank" class="social-link wa">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.058-4.51 10.06-10.059.002-2.689-1.047-5.215-2.951-7.121-1.903-1.905-4.431-2.956-7.121-2.957-5.548 0-10.059 4.511-10.06 10.06-.001 2.132.58 4.212 1.682 6.001l-.993 3.634 3.731-.979zm11.387-5.477c-.31-.156-1.834-.905-2.112-1.006-.277-.101-.48-.151-.68.151-.201.302-.777 1.006-.951 1.207-.174.202-.347.226-.658.071-.311-.155-1.314-.484-2.503-1.545-.925-.825-1.549-1.844-1.73-2.147-.181-.302-.019-.465.136-.619.139-.139.31-.362.466-.544.156-.181.208-.312.311-.518.104-.207.052-.387-.026-.543-.078-.156-.681-1.636-.933-2.245-.245-.594-.494-.514-.68-.523-.176-.009-.378-.011-.58-.011-.202 0-.53.075-.807.377-.277.301-1.059 1.031-1.059 2.516 0 1.485 1.084 2.918 1.235 3.12.151.201 2.134 3.259 5.168 4.57.721.311 1.285.498 1.724.638.724.23 1.383.197 1.904.12.581-.086 1.834-.75 2.091-1.475.258-.725.258-1.345.181-1.475-.077-.131-.282-.208-.593-.364z"/></svg>
+        <a href="https://wa.me/79628848880" target="_blank" class="social-link wa">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.058-4.51 10.06-10.059.002-2.689-1.047-5.215-2.951-7.121-1.903-1.905-4.431-2.956-7.121-2.957-5.548 0-10.059 4.511-10.06 10.06-.001 2.132.58 4.212 1.682 6.001l-.993 3.634 3.731-.979zm11.387-5.477c-.31-.156-1.834-.905-2.112-1.006-.277-.101-.48-.151-.68.151-.201.302-.777 1.006-.951 1.207-.174.202-.347.226-.658.071-.311-.155-1.314-.484-2.503-1.545-.925-.825-1.549-1.844-1.73-2.147-.181-.302-.019-.465.136-.619.139-.139.31-.362.466-.544.156-.181.208-.312.311-.518.104-.207.052-.387-.026-.543-.078-.156-.681-1.636-.933-2.245-.245-.594-.494-.514-.68-.523-.176-.009-.378-.011-.58-.011-.202 0-.53.075-.807.377-.277.301-1.059 1.031-1.059 2.516 0 1.485 1.084 2.918 1.235 3.12.151.201 2.134 3.259 5.168 4.57.721.311 1.285.498 1.724.638.724.23 1.383.197 1.904.12.581-.086 1.834-.75 2.091-1.475.258-.725.258-1.345.181-1.475-.077-.131-.282-.208-.593-.364z""")/>></svg>
         </a>
     </div>
 
     <script>
-        // ЛОГИКА ОСТАЕТСЯ ПРЕЖНЕЙ (ЭФФЕКТЫ ЧАСТИЦ И ЗВУК)
-        const canvas = document.getElementById('canvas'); const ctx = canvas.getContext('2d');
-        let particles = []; let explosions = []; const mouse = { x: null, y: null, radius: 120 };
-        let audioCtx; function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-        function playClickSound() {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [], explosions = [];
+        let mouse = { x: -100, y: -100, radius: 100 };
+        let audioCtx;
+
+        function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+
+        function playSound() {
             initAudio(); if (audioCtx.state === 'suspended') audioCtx.resume();
-            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-            osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            let osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + 0.1);
         }
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-        window.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.social-link')) return; 
-            playClickSound(); createExplosion(e.x, e.y);
-        });
-        class Particle {
-            constructor(x, y) { this.x = x; this.y = y; this.baseX = x; this.baseY = y; this.size = Math.random() * 2 + 1; this.density = (Math.random() * 20) + 5; }
-            draw() { ctx.fillStyle = 'white'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
-            update() {
-                let dx = mouse.x - this.x; let dy = mouse.y - this.y; let distance = Math.sqrt(dx*dx + dy*dy);
-                if (distance < mouse.radius) {
-                    this.x -= (dx / distance) * ((mouse.radius - distance) / mouse.radius) * this.density;
-                    this.y -= (dy / distance) * ((mouse.radius - distance) / mouse.radius) * this.density;
-                } else { this.x -= (this.x - this.baseX) / 15; this.y -= (this.y - this.baseY) / 15; }
+
+        function handleInteraction(e) {
+            let x = e.touches ? e.touches[0].clientX : e.clientX;
+            let y = e.touches ? e.touches[0].clientY : e.clientY;
+            mouse.x = x; mouse.y = y;
+            if (e.type === 'touchstart' || e.type === 'mousedown') {
+                if (!e.target.closest('.social-link')) {
+                    playSound();
+                    for(let i=0; i<15; i++) explosions.push(new Spark(x, y));
+                }
             }
         }
-        class Spark {
-            constructor(x, y) { this.x = x; this.y = y; this.size = Math.random() * 4 + 1; this.speedX = Math.random() * 10 - 5; this.speedY = Math.random() * 10 - 5; this.color = `hsl(${Math.random() * 40 + 180}, 100%, 70%)`; this.opacity = 1; }
-            update() { this.x += this.speedX; this.y += this.speedY; this.opacity -= 0.02; }
-            draw() { ctx.save(); ctx.globalAlpha = this.opacity; ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+
+        window.addEventListener('mousemove', handleInteraction);
+        window.addEventListener('mousedown', handleInteraction);
+        window.addEventListener('touchstart', handleInteraction);
+        window.addEventListener('touchmove', handleInteraction);
+
+        class Particle {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.baseX = this.x; this.baseY = this.y;
+                this.size = Math.random() * 1.5 + 0.5; this.density = Math.random() * 15 + 2;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+            }
+            update() {
+                let dx = mouse.x - this.x, dy = mouse.y - this.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < mouse.radius) {
+                    let force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= (dx/dist) * force * this.density; this.y -= (dy/dist) * force * this.density;
+                } else {
+                    this.x += (this.baseX - this.x) * 0.05; this.y += (this.baseY - this.y) * 0.05;
+                }
+            }
         }
-        function createExplosion(x, y) { for (let i = 0; i < 25; i++) explosions.push(new Spark(x, y)); }
+
+        class Spark {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.sx = Math.random()*8-4; this.sy = Math.random()*8-4;
+                this.op = 1; this.color = `hsl(${Math.random()*40 + 190}, 100%, 70%)`;
+            }
+            draw() {
+                ctx.fillStyle = this.color; ctx.globalAlpha = this.op;
+                ctx.beginPath(); ctx.arc(this.x, this.y, 2.5, 0, Math.PI*2); ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+            update() { this.x += this.sx; this.y += this.sy; this.op -= 0.025; }
+        }
+
         function init() {
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            particles = []; for (let i = 0; i < 150; i++) particles.push(new Particle(Math.random()*canvas.width, Math.random()*canvas.height));
+            particles = [];
+            let count = canvas.width < 500 ? 70 : 150;
+            for(let i=0; i<count; i++) particles.push(new Particle());
         }
+
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0,0,canvas.width, canvas.height);
             particles.forEach(p => { p.draw(); p.update(); });
-            explosions.forEach((s, i) => { s.update(); s.draw(); if (s.opacity <= 0) explosions.splice(i, 1); });
+            explosions.forEach((s, i) => {
+                s.draw(); s.update();
+                if(s.op <= 0) explosions.splice(i, 1);
+            });
             requestAnimationFrame(animate);
         }
+
         window.addEventListener('resize', init);
         init(); animate();
     </script>
