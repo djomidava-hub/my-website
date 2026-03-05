@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💄%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💄%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -64,24 +64,24 @@
         
         .works-container { position: relative; width: 100%; margin-bottom: 18px; overflow: visible; }
         
+        /* 🔧 ТЕЛЕФОН: СЕТКА 2 В РЯД */
         .works-slider { 
-            display: flex; gap: 8px; overflow-x: auto; overflow-y: visible;
-            padding: 5px 50px 18px 50px; scroll-snap-type: x mandatory; 
-            scrollbar-width: none; -webkit-overflow-scrolling: touch;
-            width: 100%; position: relative; z-index: 3;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 фото в ряд */
+            gap: 8px;
+            padding: 5px;
+            width: 100%;
+            position: relative;
+            z-index: 3;
         }
-        .works-slider::-webkit-scrollbar { display: none; }
         
-        /* 🔧 ИСПРАВЛЕНО: БОЛЬШЕ ВЫСОТА + object-fit: contain */
         .work-item {
-            min-width: 75px; 
-            height: 130px; /* 🔧 Увеличил с 105px до 130px */
-            background: rgba(168,85,247,0.15); 
-            border-radius: 20px; 
-            overflow: hidden; 
-            scroll-snap-align: start; 
-            border: 1px solid var(--card-border); 
-            flex-shrink: 0; 
+            width: 100%;
+            height: 130px;
+            background: rgba(168,85,247,0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
             transition: 0.3s;
             cursor: pointer;
             display: flex;
@@ -92,10 +92,11 @@
         .work-item img { 
             width: 100%; 
             height: 100%; 
-            object-fit: contain; /* 🔧 Было: cover - теперь фото видно полностью */
+            object-fit: contain;
             display: block; 
         }
 
+        /* Стрелки (только ПК) */
         .arrow-btn {
             position: absolute; top:50%; transform:translateY(-50%);
             width:36px;height:36px;background:rgba(168,85,247,0.4);
@@ -138,29 +139,42 @@
         .gallery-counter { color:#fff;font-size:1rem;margin-top:15px;opacity:0.8; }
         .gallery-arrow-svg { width:24px;height:24px;fill:#fff; }
 
-        /* МЕДИА ЗАПРОСЫ */
+        /* 📱 ТЕЛЕФОН: Скрываем стрелки и fade */
+        @media(hover:none)and(pointer:coarse) { 
+            .arrow-btn{display:none!important;}
+            .fade-overlay{display:none;}
+            .works-slider{grid-template-columns:repeat(2,1fr);gap:8px;}
+        }
+
+        /* 📟 ПЛАНШЕТ: Горизонтальный скролл */
         @media(min-width:600px) { 
             body{padding:35px 20px;}
             .main-card{max-width:450px;padding:45px 25px;}
             h1{font-size:2.8rem;}
-            .work-item{min-width:95px;height:155px;}
-            .works-slider{gap:10px;padding:5px 55px 20px 55px;}
+            .works-slider{
+                display:flex;
+                gap:10px;
+                overflow-x:auto;
+                overflow-y:visible;
+                padding:5px 55px 20px 55px;
+                scroll-snap-type:x mandatory;
+                scrollbar-width:none;
+            }
+            .works-slider::-webkit-scrollbar{display:none;}
+            .work-item{min-width:95px;height:155px;flex-shrink:0;scroll-snap-align:start;}
             .arrow-btn{width:40px;height:40px;}
             .arrow-btn svg{width:20px;height:20px;}
         }
+
+        /* 💻 ПК: Горизонтальный скролл */
         @media(min-width:900px) { 
             body{padding:50px 30px;}
             .main-card{max-width:500px;padding:50px 30px;}
             h1{font-size:3rem;}
-            .work-item{min-width:120px;height:190px;}
             .works-slider{gap:12px;padding:5px 60px 22px 60px;}
+            .work-item{min-width:120px;height:190px;}
             .arrow-btn{width:44px;height:44px;}
             .arrow-btn svg{width:22px;height:22px;}
-        }
-        @media(hover:none)and(pointer:coarse) { 
-            .arrow-btn{display:none!important;}
-            .fade-overlay{display:none;}
-            .works-slider{padding-left:8px!important;padding-right:8px!important;}
         }
     </style>
 </head>
