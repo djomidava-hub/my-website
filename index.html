@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💄</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💄%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
             animation: silkMove 20s ease infinite;
             color: var(--text-dark); 
             font-family: var(--font-body);
-            padding: 30px 15px; overflow-x: hidden;
+            padding: 25px 12px; overflow-x: hidden;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
@@ -49,11 +49,11 @@
 
         .content {
             position: relative; z-index: 2; text-align: center; 
-            width: 100%; max-width: 400px;
-            padding: 40px 20px;
+            width: 100%; max-width: 380px;
+            padding: 35px 18px;
             background: var(--card-bg);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px; 
+            border-radius: 35px; 
             border: 1px solid var(--card-border);
             box-shadow: var(--card-glow);
             animation: fadeIn 1.2s ease-out;
@@ -61,31 +61,32 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        p.brand { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 15px; font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 20px var(--accent-glow); }
-        h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 30px; color: var(--text-dark); letter-spacing: -1px; font-family: var(--font-heading); line-height: 1.1; text-shadow: 0 0 30px var(--accent-glow); }
+        p.brand { font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 12px; font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 20px var(--accent-glow); }
+        h1 { font-size: 2.2rem; font-weight: 300; margin-bottom: 25px; color: var(--text-dark); letter-spacing: -1px; font-family: var(--font-heading); line-height: 1.1; text-shadow: 0 0 30px var(--accent-glow); }
 
-        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 30px; }
-        .service-card { background: rgba(168, 85, 247, 0.1); padding: 15px 5px; border-radius: 20px; border: 1px solid var(--card-border); transition: 0.3s ease; }
+        .services { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 25px; }
+        .service-card { background: rgba(168, 85, 247, 0.1); padding: 12px 4px; border-radius: 18px; border: 1px solid var(--card-border); transition: 0.3s ease; }
         .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px var(--shadow); background: rgba(168, 85, 247, 0.2); border-color: var(--accent); }
-        .service-card span { font-size: 1.5rem; display: block; margin-bottom: 5px; }
-        .service-card p { font-size: 0.5rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); line-height: 1.3; letter-spacing: 0.5px; }
+        .service-card span { font-size: 1.3rem; display: block; margin-bottom: 4px; }
+        .service-card p { font-size: 0.45rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); line-height: 1.3; letter-spacing: 0.3px; }
 
-        .portfolio-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0 12px 0; color: var(--accent); font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 15px var(--accent-glow); }
+        .portfolio-title { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0 10px 0; color: var(--accent); font-weight: 600; font-family: var(--font-body); text-shadow: 0 0 15px var(--accent-glow); }
         
-        .portfolio-container { position: relative; width: 100%; margin-bottom: 20px; overflow: hidden; }
+        .portfolio-container { position: relative; width: 100%; margin-bottom: 18px; overflow: hidden; }
 
         .portfolio-grid { 
-            display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden;
-            padding: 5px 8px 20px 8px; scroll-snap-type: x mandatory; 
+            display: flex; gap: 8px; overflow-x: auto; overflow-y: hidden;
+            padding: 5px 6px 18px 6px; scroll-snap-type: x mandatory; 
             scrollbar-width: none; -webkit-overflow-scrolling: touch;
             width: 100%;
         }
         .portfolio-grid::-webkit-scrollbar { display: none; }
         
+        /* 📱 МОБИЛЬНЫЕ: очень компактные фото */
         .portfolio-item {
-            min-width: 130px; height: 180px; 
+            min-width: 100px; height: 140px; 
             background: rgba(168, 85, 247, 0.15); 
-            border-radius: 24px; overflow: hidden; 
+            border-radius: 20px; overflow: hidden; 
             scroll-snap-align: start; 
             border: 1px solid var(--card-border); 
             flex-shrink: 0; transition: 0.3s ease;
@@ -93,61 +94,74 @@
         .portfolio-item:hover { transform: scale(1.03); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* Стрелки — только для ПК */
+        /* Стрелки */
         .scroll-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 36px; height: 36px; background: rgba(168, 85, 247, 0.3);
+            width: 32px; height: 32px; background: rgba(168, 85, 247, 0.3);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 10; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
             transition: 0.3s ease; border: 1px solid var(--card-border); user-select: none;
         }
-        .scroll-arrow svg { width: 18px; height: 18px; fill: var(--text-dark); pointer-events: none; }
+        .scroll-arrow svg { width: 16px; height: 16px; fill: var(--text-dark); pointer-events: none; }
         .scroll-arrow:hover { background: rgba(168, 85, 247, 0.6); transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6); }
         .scroll-arrow:active { transform: translateY(-50%) scale(0.95); }
         .scroll-arrow.auto-scroll { background: rgba(168, 85, 247, 0.8); box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); animation: pulse 0.8s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6); } 50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.9); } }
-        .scroll-arrow.left { left: 5px; }
-        .scroll-arrow.right { right: 5px; }
+        .scroll-arrow.left { left: 4px; }
+        .scroll-arrow.right { right: 4px; }
         .scroll-arrow.hidden { opacity: 0; pointer-events: none; }
 
-        .portfolio-fade { position: absolute; top: 5px; bottom: 20px; width: 40px; pointer-events: none; z-index: 5; }
+        .portfolio-fade { position: absolute; top: 5px; bottom: 18px; width: 35px; pointer-events: none; z-index: 5; }
         .portfolio-fade.left { left: 0; background: linear-gradient(to right, rgba(45,31,61,0.95), transparent); }
         .portfolio-fade.right { right: 0; background: linear-gradient(to left, rgba(45,31,61,0.95), transparent); }
 
         .btn {
             display: block; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-            color: #fff; padding: 20px; border-radius: 28px; text-decoration: none; 
-            font-size: 0.8rem; font-weight: 600; letter-spacing: 3px; margin: 10px 0 35px 0;
+            color: #fff; padding: 18px; border-radius: 26px; text-decoration: none; 
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; margin: 10px 0 30px 0;
             box-shadow: 0 15px 40px var(--accent-glow); transition: 0.3s ease;
             text-transform: uppercase; font-family: var(--font-body);
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5); }
         .btn:active { transform: scale(0.98); }
 
-        .socials { display: flex; gap: 18px; justify-content: center; }
+        .socials { display: flex; gap: 16px; justify-content: center; }
         .social-btn {
-            width: 55px; height: 55px; background: rgba(168, 85, 247, 0.2);
+            width: 50px; height: 50px; background: rgba(168, 85, 247, 0.2);
             border-radius: 50%; display: flex; justify-content: center; align-items: center;
             box-shadow: 0 8px 20px var(--shadow); text-decoration: none; transition: 0.3s ease;
             border: 1px solid var(--card-border);
         }
         .social-btn:hover { transform: translateY(-5px); background: rgba(168, 85, 247, 0.4); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4); border-color: var(--accent); }
-        .social-btn svg { width: 24px; height: 24px; fill: var(--text-dark); transition: 0.3s ease; }
+        .social-btn svg { width: 22px; height: 22px; fill: var(--text-dark); transition: 0.3s ease; }
         .social-btn:hover svg { fill: #fff; }
 
         .dot { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.5; animation: shine var(--d) infinite; box-shadow: 0 0 10px var(--accent-glow); }
         @keyframes shine { 0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); } 50% { opacity: 0.7; transform: translateY(-35px) scale(1.3); } }
 
+        /* 📟 ПЛАНШЕТЫ (600px+) */
         @media (min-width: 600px) {
-            .content { max-width: 450px; padding: 50px 30px; }
-            h1 { font-size: 3rem; }
-            .portfolio-item { min-width: 145px; height: 200px; }
+            body { padding: 35px 20px; }
+            .content { max-width: 450px; padding: 45px 25px; }
+            h1 { font-size: 2.8rem; }
+            .portfolio-item { min-width: 120px; height: 170px; border-radius: 22px; }
+            .portfolio-grid { gap: 10px; }
+            .scroll-arrow { width: 36px; height: 36px; }
+            .scroll-arrow svg { width: 18px; height: 18px; }
         }
+
+        /* 💻 ПК (900px+) */
         @media (min-width: 900px) {
             body { padding: 50px 30px; }
-            .content { max-width: 500px; }
-            .portfolio-item { min-width: 160px; height: 220px; }
+            .content { max-width: 500px; padding: 50px 30px; }
+            h1 { font-size: 3rem; }
+            .portfolio-item { min-width: 140px; height: 200px; border-radius: 24px; }
+            .portfolio-grid { gap: 12px; padding: 5px 8px 20px 8px; }
+            .scroll-arrow { width: 40px; height: 40px; left: 5px; right: 5px; }
+            .scroll-arrow svg { width: 20px; height: 20px; }
         }
+
+        /* 📱 На тач-устройствах скрываем стрелки */
         @media (hover: none) and (pointer: coarse) {
             .scroll-arrow { display: none !important; }
             .portfolio-fade { display: none; }
@@ -176,16 +190,16 @@
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </div>
             <div class="portfolio-grid" id="portfolioGrid">
-                <div class="portfolio-item"><img src="https://i.ibb.co/20CX22Qp/1.jpg" alt="Работа 1" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/35dxcRSq/2.jpg" alt="Работа 2" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/B5wvjwpM/3.jpg" alt="Работа 3" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/w3xctz3/4.jpg" alt="Работа 4" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/1tH9TZG2/5.jpg" alt="Работа 5" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/xS81YVgG/6.jpg" alt="Работа 6" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/KvNVbGK/7.jpg" alt="Работа 7" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/DDRqKL8g/8.jpg" alt="Работа 8" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/TqMpCqw0/9.jpg" alt="Работа 9" width="130" height="180" loading="lazy"></div>
-                <div class="portfolio-item"><img src="https://i.ibb.co/HpVFKb99/10.jpg" alt="Работа 10" width="130" height="180" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/20CX22Qp/1.jpg" alt="Работа 1" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/35dxcRSq/2.jpg" alt="Работа 2" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/B5wvjwpM/3.jpg" alt="Работа 3" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/w3xctz3/4.jpg" alt="Работа 4" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/1tH9TZG2/5.jpg" alt="Работа 5" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/xS81YVgG/6.jpg" alt="Работа 6" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/KvNVbGK/7.jpg" alt="Работа 7" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/DDRqKL8g/8.jpg" alt="Работа 8" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/TqMpCqw0/9.jpg" alt="Работа 9" width="100" height="140" loading="lazy"></div>
+                <div class="portfolio-item"><img src="https://i.ibb.co/HpVFKb99/10.jpg" alt="Работа 10" width="100" height="140" loading="lazy"></div>
             </div>
         </div>
 
@@ -226,48 +240,32 @@
             if (!grid || !scrollLeft || !scrollRight) return;
             
             let autoScrollTimer = null;
-            let isClicking = false; // 🔒 Флаг: идёт ли клик
-            
-            // Проверяем, что это ПК с мышью
             const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
             
             if (isDesktop) {
                 
-                // 🖱 Клик по стрелке — листает ровно на одно фото
                 function scrollByClick(direction) {
-                    // Останавливаем авто-скролл если он идёт
                     if (autoScrollTimer) {
                         clearInterval(autoScrollTimer);
                         autoScrollTimer = null;
                         scrollLeft.classList.remove('auto-scroll');
                         scrollRight.classList.remove('auto-scroll');
                     }
-                    
-                    // Блокируем ховер на 300мс чтобы не мешал
-                    isClicking = true;
-                    setTimeout(() => { isClicking = false; }, 300);
-                    
-                    // Считаем ширину одного элемента + отступ
-                    const itemWidth = 130 + 10; // 130px фото + 10px gap
+                    const itemWidth = window.innerWidth < 600 ? 108 : (window.innerWidth < 900 ? 130 : 152);
                     grid.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
                 }
                 
                 scrollLeft.addEventListener('click', () => scrollByClick(-1));
                 scrollRight.addEventListener('click', () => scrollByClick(1));
                 
-                // 🖱 Авто-скролл при наведении (только если не кликаем)
                 function startAutoScroll(direction) {
-                    if (isClicking) return;
-                    stopAutoScroll();
-                    
+                    if (autoScrollTimer) clearInterval(autoScrollTimer);
                     const arrow = direction < 0 ? scrollLeft : scrollRight;
                     arrow.classList.add('auto-scroll');
-                    
                     autoScrollTimer = setInterval(() => {
-                        if (isClicking) { stopAutoScroll(); return; }
-                        grid.scrollLeft += direction * 0.2;
+                        grid.scrollLeft += direction * 0.3;
                         updateArrows();
-                    }, 60);
+                    }, 50);
                 }
                 
                 function stopAutoScroll() {
@@ -285,7 +283,6 @@
                 scrollRight.addEventListener('mouseleave', stopAutoScroll);
             }
             
-            // ➡️ Управление видимостью стрелок
             function updateArrows() {
                 const maxScroll = grid.scrollWidth - grid.clientWidth;
                 scrollLeft.classList.toggle('hidden', grid.scrollLeft <= 5);
